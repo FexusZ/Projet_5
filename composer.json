@@ -1,0 +1,15 @@
+{
+    "name": "projet_5/vendor",
+    "authors": [
+        {
+            "name": "Fexus",
+            "email": "jseb.1999@outlook.fr"
+        }
+    ],
+    "require": {
+
+    },
+    "autoload":{
+    	"psr-4" : {"APP\\" :"APP"} 
+    }
+}
