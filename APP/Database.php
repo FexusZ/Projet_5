@@ -1,6 +1,6 @@
 <?php
 
-	namespace Fexus;
+	namespace APP;
 
 	use \PDO;
 
@@ -22,7 +22,6 @@
 			$this->db_pass = $db_pass;
 			$this->db_host = $db_host;
 		}
-
 		private function init(){
 			if ($this->dbh == NULL) {
 				$dbh = new PDO('mysql:host= ' . $this->db_host . ';dbname=' . $this->db_name, $this->db_user, $this->db_pass);
@@ -32,7 +31,6 @@
 
 			return $this->dbh;
 		}
-
 		public function query($statement){
 			$requete = $this->init()->query($statement);
 
@@ -46,7 +44,6 @@
 
 			return $reponse;
 		}
-
 		public function execute($statement, $array){
 			$requete = $this->init()->prepare($statement);
 
@@ -65,7 +62,4 @@
 
 			return $reponse;
 		}
-
-
-
 	}

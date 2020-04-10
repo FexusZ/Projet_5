@@ -1,9 +1,7 @@
 <?php
-namespace Fexus;
+namespace APP;
 // test commit
-require 'APP/autoload.php';
-
-Autoload::register();
+require 'vendor/autoload.php';
 
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];

@@ -1,6 +1,8 @@
 <?php
-
-namespace Fexus;
+/*
+* OLD autoload use composer now
+*/
+namespace APP;
 
 /**
  * Class Autoloader
