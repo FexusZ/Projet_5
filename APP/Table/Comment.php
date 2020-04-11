@@ -2,7 +2,7 @@
 	namespace APP\Table;
 	use APP\AppFactory;
 
-	class Post
+	class Comment
 	{
 		protected $db;
 		protected $table;
@@ -13,10 +13,10 @@
 		}
 
 		public static function getNotValidate(){
-			return AppFactory::query("SELECT * FROM comment
-									JOIN post 
-										ON comment.ID_post = post.ID
-									WHERE comment.validate = 0
-									ORDER BY post.ID, comment.ID");
+			return AppFactory::query("SELECT c.ID as id_comment, p.ID as id_post, p.title, c.comment, c.Id_user FROM comment as c
+									JOIN post as p
+										ON c.ID_post = p.ID
+									WHERE c.validate = 0
+									ORDER BY p.ID, c.ID");
 		}
 	}
