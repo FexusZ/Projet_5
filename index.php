@@ -1,5 +1,4 @@
 <?php
-namespace APP;
 // test commit
 require 'vendor/autoload.php';
 
@@ -9,7 +8,7 @@ if (isset($_GET['page'])) {
 	$page = 'home';
 }
 
-$dbh = new Database('Expressfood');
+
 
 ob_start();
 
