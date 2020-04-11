@@ -10,6 +10,9 @@
 
     },
     "autoload":{
-    	"psr-4" : {"APP\\" :"APP"} 
+        "psr-4" : {
+            "APP\\" :"APP",
+            "Core\\" : "Core"
+        }
     }
 }
