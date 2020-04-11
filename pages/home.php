@@ -2,7 +2,7 @@
 	<header id="head">
 		<div class="container">
 			<div class="row">
-	        	<h1 class="lead">Jean-Sébastien le déveoppeur qu'il vous faut ! </h1>
+	        	<h1 class="lead">Jean-Sébastien le développeur qu'il vous faut ! </h1>
 				<p class="tagline"></p>
         		<p><a class="btn btn-default btn-lg" role="button">Me contacter</a> <a class="btn btn-action btn-lg" role="button"> CV </a></p>
       		</div>
@@ -10,8 +10,8 @@
   	</header>
   	<!-- /Header -->
 
-<?php foreach (\APP\AppFactory::getDbQuery('SELECT * FROM client') as  $value): ?>
+<?php foreach (APP\table\Post::getLast() as $value): ?>
 
-	<!-- <?= $value->user ?> -->
+	<?php var_dump($value); ?>
 
 <?php endforeach; ?>

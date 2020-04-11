@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
   
-  <title>Progressus - Free business bootstrap template by GetTemplate</title>
+  <title>Blog</title>
 
   <link rel="shortcut icon" href="public/images/gt_favicon.png">
   
@@ -83,15 +83,12 @@
             <h3 class="widget-title">Me contacter</h3>
             <div class="widget-body">
               <p> 06********<br>
-                <a href="mailto:#">some.email@somewhere.com</a><br>
-                <br>
-                234 Hidden Pond Road, Ashland City, TN 37015
-              </p>  
+                <a href="mailto:#">jseb.1999@outlook.fr</a><br> 
             </div>
           </div>
 
           <div class="col-md-3 widget">
-            <h3 class="widget-title">Follow me</h3>
+            <h3 class="widget-title">Mes réseaux sociaux :</h3>
             <div class="widget-body">
               <p class="follow-me-icons">
                 <a href=""><i class="fa fa-twitter fa-2"></i></a>
@@ -122,10 +119,9 @@
             <div class="widget-body">
               <p class="simplenav">
                 <a href="#">Home</a> | 
-                <a href="about.html">About</a> |
+                <a href="about.html">A propos</a> |
                 <a href="sidebar-right.html">Sidebar</a> |
-                <a href="contact.html">Contact</a> |
-                <b><a href="signup.html">Sign up</a></b>
+                <a href="contact.html">Me contacter</a> |
               </p>
             </div>
           </div>
@@ -133,7 +129,7 @@
           <div class="col-md-6 widget">
             <div class="widget-body">
               <p class="text-right">
-                Copyright &copy; 2014, Your name. Designed by <a href="http://gettemplate.com/" rel="designer">gettemplate</a> 
+                Copyright &copy; 2020, FexusZ. Designed by <a href="http://gettemplate.com/" rel="designer">gettemplate</a> 
               </p>
             </div>
           </div>

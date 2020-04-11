@@ -1,5 +1,6 @@
 <?php
 // test commit
+namespace APP;
 require 'vendor/autoload.php';
 
 if (isset($_GET['page'])) {
