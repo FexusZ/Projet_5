@@ -9,14 +9,13 @@
     	</div>
   	</header>
   	<!-- /Header -->
-<!-- 
-<?php foreach (APP\table\Post::getLast() as $value): ?>
 
-	<?php var_dump($value); ?>
+<?php foreach (APP\table\Post::getLast() as $value):
 
-<?php endforeach; ?> -->
+	echo($value->post_chapo);
 
-<?php foreach(APP\table\Comment::getNotValidate() as $comment){
+endforeach;
 
-	var_dump($comment);
+foreach(APP\table\Comment::getNotValidate() as $comment){
+	// var_dump($comment);
 }

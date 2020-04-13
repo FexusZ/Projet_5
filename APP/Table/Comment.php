@@ -9,7 +9,7 @@
 
 		public static function getAll($id_post)
 		{
-			return AppFactory::query("SELECT * FROM comment WHERE ID_post = ?", false, [$id_post]);
+			return AppFactory::query("SELECT * FROM comment WHERE ID_post = ?", __CLASS__, false, [$id_post]);
 		}
 
 		public static function getNotValidate(){
@@ -17,6 +17,6 @@
 									JOIN post as p
 										ON c.ID_post = p.ID
 									WHERE c.validate = 0
-									ORDER BY p.ID, c.ID");
+									ORDER BY p.ID, c.ID", __CLASS__);
 		}
 	}
