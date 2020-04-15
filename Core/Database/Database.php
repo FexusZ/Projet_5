@@ -70,7 +70,6 @@
 		*/
 		public function query($statement, $class_name, $fetch = false)
 		{
-
 			$requete = $this->init()->query($statement);
 			$requete->setFetchMode(PDO::FETCH_CLASS, $class_name);
 
@@ -105,7 +104,6 @@
 			{
 				$reponse = $requete->fetchAll();
 			}
-			
 
 			return $reponse;
 		}

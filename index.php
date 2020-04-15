@@ -1,7 +1,5 @@
 <?php
 // test commit
-namespace APP;
-use APP\Table\Comment;
 require 'vendor/autoload.php';
 
 if (isset($_GET['page'])) {
@@ -9,7 +7,6 @@ if (isset($_GET['page'])) {
 }else{
 	$page = 'home';
 }
-
 
 ob_start();
 

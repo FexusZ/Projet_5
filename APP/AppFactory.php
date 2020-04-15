@@ -30,6 +30,7 @@
 		*/
 		public static function query($statement, $class_name, $fetch = false, $array = array())
 		{
+			var_dump($array);
 			if (empty($array))
 			{
 				self::$response = self::getDb()->query($statement, $class_name, $fetch);
