@@ -58,6 +58,8 @@
 				$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				$this->dbh = $dbh;
 			}
+
+
 			return $this->dbh;
 		}
 
@@ -66,19 +68,19 @@
 		* @param $fetch bool permet de bloquer a un resultat
 		* @return array
 		*/
-		public function query($statement, $fetch = false)
+		public function query($statement, $class_name, $fetch = false)
 		{
 			$requete = $this->init()->query($statement);
+			$requete->setFetchMode(PDO::FETCH_CLASS, $class_name);
 
 			if ($fetch) 
 			{
-				$reponse = $requete->fetch(PDO::FETCH_OBJ);
+				$reponse = $requete->fetch();
 			}
 			else
 			{
-				$reponse = $requete->fetchAll(PDO::FETCH_OBJ);
+				$reponse = $requete->fetchAll();
 			}
-
 
 			return $reponse;
 		}
@@ -88,20 +90,20 @@
 		* @param $fetch bool permet de bloquer a un resultat
 		* @return array
 		*/
-		public function execute($statement, $array, $fetch = false)
+		public function execute($statement, $class_name, $array, $fetch = false)
 		{
 			$requete = $this->init()->prepare($statement);
-
+			$requete->setFetchMode(PDO::FETCH_CLASS, $class_name);
+		
 			$requete->execute($array);
 			if ($fetch) 
 			{
-				$reponse = $requete->fetch(PDO::FETCH_OBJ);
+				$reponse = $requete->fetch();
 			}
 			else
 			{
-				$reponse = $requete->fetchAll(PDO::FETCH_OBJ);
+				$reponse = $requete->fetchAll();
 			}
-			
 
 			return $reponse;
 		}

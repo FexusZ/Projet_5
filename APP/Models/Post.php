@@ -9,6 +9,7 @@
 
 		public static function getAll()
 		{
+
 			return AppFactory::query("SELECT * FROM post", __CLASS__);
 		}
 

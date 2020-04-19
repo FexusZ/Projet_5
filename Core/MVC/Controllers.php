@@ -45,5 +45,4 @@
 			$models = '\\APP\\Models\\'.$model;
 			$this->$model = new $models();
 		}
-
 	}
