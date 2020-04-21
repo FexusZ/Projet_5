@@ -68,8 +68,9 @@
 		* @param $fetch bool permet de bloquer a un resultat
 		* @return array
 		*/
-		public function query($statement, $class_name =NULL, $fetch = false)
+		public function query($statement, $class_name = NULL, $fetch = false)
 		{
+
 			$requete = $this->init()->query($statement);
 			if ($class_name == NULL) {
 				$requete->setFetchMode(PDO::FETCH_OBJ);
@@ -78,7 +79,12 @@
 			{
 				$requete->setFetchMode(PDO::FETCH_CLASS, $class_name);
 			}
-			if ($fetch) 
+
+			if ($fetch === 'No') 
+			{
+				$reponse ='';
+			}
+			elseif ($fetch) 
 			{
 				$reponse = $requete->fetch();
 			}
@@ -95,7 +101,7 @@
 		* @param $fetch bool permet de bloquer a un resultat
 		* @return array
 		*/
-		public function execute($statement, $class_name =NULL, $array, $fetch = false)
+		public function execute($statement, $class_name = NULL, $fetch = false, $array = array())
 		{
 			$requete = $this->init()->prepare($statement);
 			if ($class_name == NULL) {
@@ -107,7 +113,13 @@
 			}
 		
 			$requete->execute($array);
-			if ($fetch) 
+
+
+			if ($fetch === 'No') 
+			{
+				$reponse ='';
+			}
+			elseif ($fetch) 
 			{
 				$reponse = $requete->fetch();
 			}

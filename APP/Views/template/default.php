@@ -25,10 +25,11 @@
   <![endif]-->
 </head>
 <body class="home">
-
+  <main style="min-height: 75vh;">
     
-  <?= $content ?>
+    <?= $content ?>
 
+  </main>
   <!-- Social links. @TODO: replace by link/instructions in template -->
   <section id="social">
     <div class="container">

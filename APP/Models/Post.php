@@ -9,7 +9,6 @@
 
 		public static function getAll()
 		{
-
 			return AppFactory::query("SELECT * FROM post", __CLASS__);
 		}
 
@@ -36,16 +35,27 @@
 
  		function getUrl()
  		{
-
- 			return 'post/'. $this->ID;
+ 			return 'http://projet5/post/post/'. $this->ID;
  		}
 
  		function getPost_chapo()
  		{
- 			return '<p>'. $this->content . '<a href='. $this->getUrl() .'>... </a>';
+ 			return '<p>'. $this->chapo . '<a href='. $this->getUrl() .'>... </a>';
  		}
+
  		function getPost_title()
  		{
+ 			return '<h2>'. $this->title .'</h2>';
+ 		}
 
+ 		function getAuthor()
+ 		{
+ 			$author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID'	=>	$this->ID_user])->author;
+ 			return '<p> Publication faite par : '.$author.' </br> Derniere modification faite le : '.date('d-m-Y', $this->last_update).'</p>';
+ 		}
+
+ 		function getPost_content()
+ 		{
+ 			return '<p>'.$this->chapo.'</p><p>'. $this->content .'</p>';
  		}
 	}

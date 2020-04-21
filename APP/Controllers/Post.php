@@ -6,7 +6,7 @@
 	 */
 	class Post extends \Core\MVC\Controllers
 	{
-		protected $models = array('Post');
+		protected $models = array('Post', 'Comment');
 
 		function index()
 		{
@@ -20,5 +20,18 @@
 			$param['post'] = $this->Post->getPost($id);
 			$this->set($param);
 			$this->render('post');
+		}
+		
+		function create()
+		{
+
+			$this->render('create');
+		}
+		
+		function update($id)
+		{
+			$param['post'] = $this->Post->getPost($id);
+			$this->set($param);
+			$this->render('update');
 		}
 	}

@@ -28,14 +28,19 @@
 		* @param array $array
 		* @return mixed
 		*/
-		public static function query($statement, $class_name, $fetch = false, $array = array())
+		public static function query($statement, $class_name = NULL, $fetch = false, $array = array())
 		{
 			if (empty($array))
 			{
 				self::$response = self::getDb()->query($statement, $class_name, $fetch);
 			}else{
-				self::$response = self::getDb()->execute($statement, $class_name, $array, $fetch);
+				self::$response = self::getDb()->execute($statement, $class_name, $fetch, $array);
 			}
 			return self::$response;
+		}
+
+		public static function getMenu($page)
+		{
+			
 		}
 	}
