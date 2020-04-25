@@ -59,9 +59,6 @@
 		{
 
 			$verif_email = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE email = ?',NULL, true, [$Email]);
-			//var_dump(preg_match('#((a-zA-Z0-9\.-_)@(a-zA-Z-0-9\.-_)\.([a-z]))#',trim($Email)));
-			var_dump(preg_match('#^(([a-zA-Z0-9\.-_])+)@(([a-zA-Z-0-9\.-_])+)\.(([a-z])+)$#',trim($Email)));
-
 
 			if (empty($Email)) 
 			{
@@ -139,8 +136,8 @@
 			$headers = "From: <fexus.j.sebastien@gmail.com>\n";
 			$headers .= "Reply-To: fexus.j.sebastien@gmail.com\n";
 			$headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
-			//mail($destinataire,$sujet,$message,$headers);
+			mail($destinataire,$sujet,$message,$headers);
 
-		//	header('Location: http://projet5/login/signin/validate');
+			header('Location: http://projet5/login/signin/validate');
 		}
 	}
