@@ -70,7 +70,6 @@
 
 			if ($test_token) 
 			{
-				var_dump($test_token);
 				if ($test_token->token_use == 0) 
 				{
 					$message = '<p class="success">Compte Validé </p>';

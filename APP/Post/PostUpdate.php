@@ -27,7 +27,7 @@
 
 		public function update()
 		{
-			AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, ID_user = :ID_user, last_update = :last_update, post_date = :post_date WHERE ID = :id',
+			AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update, post_date = :post_date WHERE ID = :id',
 				NULL, 'No',
 				[
 					':title'		=>	$this->title,

@@ -14,7 +14,7 @@
 
 		public static function getLast()
 		{
-			return AppFactory::query("SELECT * FROM post LIMIT 5", __CLASS__);
+			return AppFactory::query("SELECT * FROM post LIMIT 4", __CLASS__);
 		}
 
 		public static function getPost($id)

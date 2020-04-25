@@ -15,7 +15,7 @@
 		color:green;
 	}
 </style>
-<div class="container" style='padding-top: 120px;'>
+<div class="container container3">
 	<ol class="breadcrumb">
 		<li><a href="http://projet5/home/index/">Home</a></li>
 		<li class="active">Contact</li>

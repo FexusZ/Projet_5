@@ -1,23 +1,24 @@
-
-
 <!-- Header -->
 <header id="head">
 <div class="container">
   <div class="row">
     <h1 class="lead">Jean-Sébastien Neuhart, le développeur qu'il vous faut !</h1>
     <p class="tagline"></p>
-    <p><a class="btn btn-default btn-lg" role="button">CV</a> <a class="btn btn-action btn-lg" role="button">Post</a></p>
+    <p> <a class="btn btn-default btn-lg" href='http://projet5/home/cv' role="button">CV</a> 
+        <a class="btn btn-action btn-lg" href='http://projet5/post/index/'role="button">Post</a></p>
   </div>
 </div>
 </header>
 <!-- /Header -->
 
-<div class="container">
+<div class="container container2">
 	<div class="row">
-    	<?php foreach ($last_post as $key => $value):?>
-    		<div class="col-sm-6">
+		<?php foreach ($last_post as $key => $value):?>
+			<div class="col-md-6" style="border:solid 1px;">
+				<?= $value->post_title ?>
 				<?= $value->post_chapo ?>
+				<?= $value->Author ?>
 			</div>
 		<?php endforeach;?>
-		</div>
+	</div>
 </div>

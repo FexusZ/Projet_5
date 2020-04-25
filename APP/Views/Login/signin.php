@@ -26,7 +26,7 @@
     }
 </style>
 <!-- container -->
-<div class="container" style='padding-top: 120px;'>
+<div class="container container3">
     <div class="row">
         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <div class="panel panel-default">

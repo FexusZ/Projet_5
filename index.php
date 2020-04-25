@@ -7,10 +7,17 @@
 	define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 	define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 	require ROOT.'vendor/autoload.php';
-	$param = explode('/', $_GET['p']);
-	$controller = 'APP\\Controllers\\'.$param[0];
-	$action = isset($param[1])?$param[1]:'index';
-
+	if(!empty($_GET['p']))
+	{
+		$param = explode('/', $_GET['p']);
+		$controller = 'APP\\Controllers\\'.$param[0];
+		$action = isset($param[1])?$param[1]:'index';
+	}
+	else
+	{
+		$controller = '';
+		$action ='';
+	}
 	if (class_exists($controller))
 	{
 		$controller = new $controller();

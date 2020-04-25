@@ -32,7 +32,7 @@
 	    padding-right: 15px;
     }
 </style>
-<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2"  style='padding-top: 120px;'>
+<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 container3">
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<?php

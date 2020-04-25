@@ -36,8 +36,8 @@
 
 		public function insert()
 		{
-			AppFactory::query('INSERT INTO post(title, chapo, content, ID_user, last_update, post_date)
-				VALUES(:title, :chapo, :content, :ID_user, :last_update, :post_date)',
+			AppFactory::query('INSERT INTO post(title, chapo, content, ID_user, update_ID_user, last_update, post_date)
+				VALUES(:title, :chapo, :content, :ID_user, :ID_user, :last_update, :post_date)',
 				NULL, 'No',
 				[
 					':title'		=>	$this->title,

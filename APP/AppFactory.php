@@ -71,48 +71,16 @@
 											'lien'	=>	"",
 											'sub_menu'	=>	array(
 												'Confirmer commentaire'	=>	array(
-												'lien'	=>	'http://projet5/comment/check/'
+												'lien'	=>	'http://projet5/moderator/check_comment/'
+												),
+												'Utilisateur'	=>	array(
+												'lien'	=>	'http://projet5/moderator/check_user/'
 												)
 											)
 										);
 			}
 			self::$page = $page;
 			return 	self::ExpandMenu($menu, false);
-
-
-
-			// <!-- Fixed navbar -->
-			// <div class="navbar navbar-inverse navbar-fixed-top headroom" >
-			//     <div class="container">
-			//       <div class="navbar-header">
-			//         <!-- Button for smallest screens -->
-			//         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-			//         <a class="navbar-brand" href="http://projet5/home/index/"><img src="../../public/images/logo_test.png" alt="Progressus HTML5 template"></a>
-			//       </div>
-			//       <div class="navbar-collapse collapse">
-
-
-			//         <ul class="nav navbar-nav pull-right">
-			//           <li class="active"><a href="http://projet5/home/index/">Accueil</a></li>
-			//           <li><a href="http://projet5/post/index/">Post</a></li>
-
-
-			//           <li class="dropdown">
-			//             <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
-			//             <ul class="dropdown-menu">
-			//               <li><a href="sidebar-left.html">Left Sidebar</a></li>
-			//               <li class="active"><a href="sidebar-right.html">Right Sidebar</a></li>
-			//             </ul>
-			//           </li>
-
-
-
-			//           <li><a href="?page=contact">Contact</a></li>
-			//         </ul>
-			//       </div><!--/.nav-collapse -->
-			//     </div>
-			// </div> 
-			// <!-- /.navbar -->
 		}
 
 		private static function ExpandMenu($menu, $children = true)

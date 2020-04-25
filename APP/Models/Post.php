@@ -40,7 +40,7 @@
 
  		function getPost_chapo()
  		{
- 			return '<p>'. $this->chapo . '<a href='. $this->getUrl() .'>... </a>';
+ 			return '<p>'. $this->chapo . '... <a href='. $this->getUrl() .'>Voir la suite</a>';
  		}
 
  		function getPost_title()
@@ -51,7 +51,8 @@
  		function getAuthor()
  		{
  			$author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID'	=>	$this->ID_user])->author;
- 			return '<p> Publication faite par : '.$author.' </br> Derniere modification faite le : '.date('d-m-Y', $this->last_update).'</p>';
+ 			$update_author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID'	=>	$this->update_ID_user])->author;
+ 			return '<p> Publication faite par : '.$author.' </br> Derniere modification faite le : '.date('d-m-Y', $this->last_update).', par : '.$update_author.'</p>';
  		}
 
  		function getPost_content()

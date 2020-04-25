@@ -15,4 +15,9 @@
 			$this->set($param);
 			$this->render('index');
 		}
+
+		function cv()
+		{
+			$this->render('cv');
+		}
 	}

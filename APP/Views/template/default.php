@@ -16,7 +16,7 @@
   <!-- Custom styles for our template -->
   <link rel="stylesheet" href="../../public/css/bootstrap-theme.css" media="screen" >
   <link rel="stylesheet" href="../../public/css/main.css">
-  <!-- <link rel="stylesheet" href="../../public/css/blog.css"> OLD blog.css-->
+  <link rel="stylesheet" href="../../public/css/blog.css">
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
 
   </main>
   <!-- Social links. @TODO: replace by link/instructions in template -->
-  <section id="social">
+  <section id='social'>
     <div class="container">
       <div class="wrapper clearfix">
         <!-- AddThis Button BEGIN -->
@@ -48,8 +48,7 @@
   <!-- /social links -->
 
 
-  <footer id="footer" class="top-space">
-
+  <footer id="footer">
     <div class="footer1">
       <div class="container">
         <div class="row">

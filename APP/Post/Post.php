@@ -67,10 +67,9 @@
 
 		protected function setId($id)
 		{
-			$test_id = AppFactory::query('SELECT * FROM post WHERE ID = :id AND ID_user = :ID_user', NULL, true, 
+			$test_id = AppFactory::query('SELECT * FROM post WHERE ID = :id', NULL, true, 
 				[
 					':id' => $id,
-					':ID_user' => $this->ID_user,
 				]);
 			if (is_int($id) && !empty($test_id)) 
 			{

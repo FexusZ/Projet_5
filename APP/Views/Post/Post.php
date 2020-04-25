@@ -5,22 +5,24 @@
     }
 </style>
 <!-- /.navbar -->
-<div class="container" style='padding-top: 120px;'>
+<div class="container container3">
 	<div class="row">
-		<?= $post->post_title ?>
-		<?= $post->post_content ?>
-		<?= $post->author ?>
+        <div class='col-sm-12'>
+    		<?= $post->post_title ?>
+    		<?= $post->post_content ?>
+    		<?= $post->author ?>
 
-        <?php
-            if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
-                echo "<a href='http://projet5/post/update/".$post->ID."'> Modifier le post </a>";
-            }
-        ?>
-            
+            <?php
+                if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
+                    echo "<a href='http://projet5/post/update/".$post->ID."'> Modifier le post </a>";
+                }
+            ?>
+        </div>  
 	</div>
     <hr>
     <div class="row">
-        <h3>Commentaires : </h3>
-            
+        <div class='col-sm-12'>
+            <h3>Commentaires : </h3>
+        </div>
     </div>
 </div>
