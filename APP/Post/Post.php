@@ -72,9 +72,12 @@
 					':id' => $id,
 					':ID_user' => $this->ID_user,
 				]);
-			if (is_int($id) && !empty($test_id)) {
+			if (is_int($id) && !empty($test_id)) 
+			{
 				$this->ID = $id;
-			}else{
+			}
+			else
+			{
 				exit('ID de post incorrect.');
 			}
 		}
@@ -83,9 +86,12 @@
 		{
 			$test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id', 
 				 NULL, true, [':id' => $id]);
-			if (is_int($id) && !empty($test_id)) {
+			if (is_int($id) && !empty($test_id)) 
+			{
 				$this->ID_user = $id;
-			}else{
+			}
+			else
+			{
 				exit('ID d\'utilisateur incorrect.');
 			}
 		}

@@ -7,7 +7,7 @@
 
 		private static $db;
 		private static $response;
-
+		private static $page;
 		/**
 		* Créer un instance de la classe Database
 		* @return Database
@@ -41,6 +41,142 @@
 
 		public static function getMenu($page)
 		{
-			
+			$menu = array(
+				'Home'	=>	array(
+					'lien'		=>	'http://projet5/home/index/'
+				),
+
+				'Post'	=>	array(
+					'lien'		=>	'http://projet5/post/index/',
+					'sub_menu'	=>	array(
+						
+						
+					)
+				),
+
+				'Contact'	=>	array(
+					'lien'		=>	'http://projet5/contact/contact/'
+				)
+			);
+			if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
+				$menu['Post']['sub_menu'] = array(
+												'Post'	=>	array(
+													'lien'		=>	'http://projet5/post/index/',
+												),
+												'Create'	=>	array(
+													'lien'	=>	'http://projet5/post/create/'
+												),
+											);
+				$menu['Moderation'] = array(
+											'lien'	=>	"",
+											'sub_menu'	=>	array(
+												'Confirmer commentaire'	=>	array(
+												'lien'	=>	'http://projet5/comment/check/'
+												)
+											)
+										);
+			}
+			self::$page = $page;
+			return 	self::ExpandMenu($menu, false);
+
+
+
+			// <!-- Fixed navbar -->
+			// <div class="navbar navbar-inverse navbar-fixed-top headroom" >
+			//     <div class="container">
+			//       <div class="navbar-header">
+			//         <!-- Button for smallest screens -->
+			//         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+			//         <a class="navbar-brand" href="http://projet5/home/index/"><img src="../../public/images/logo_test.png" alt="Progressus HTML5 template"></a>
+			//       </div>
+			//       <div class="navbar-collapse collapse">
+
+
+			//         <ul class="nav navbar-nav pull-right">
+			//           <li class="active"><a href="http://projet5/home/index/">Accueil</a></li>
+			//           <li><a href="http://projet5/post/index/">Post</a></li>
+
+
+			//           <li class="dropdown">
+			//             <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Pages <b class="caret"></b></a>
+			//             <ul class="dropdown-menu">
+			//               <li><a href="sidebar-left.html">Left Sidebar</a></li>
+			//               <li class="active"><a href="sidebar-right.html">Right Sidebar</a></li>
+			//             </ul>
+			//           </li>
+
+
+
+			//           <li><a href="?page=contact">Contact</a></li>
+			//         </ul>
+			//       </div><!--/.nav-collapse -->
+			//     </div>
+			// </div> 
+			// <!-- /.navbar -->
+		}
+
+		private static function ExpandMenu($menu, $children = true)
+		{	
+			if ($children) {
+				$return = '';
+			}else{
+
+				$return = "
+				<div class='navbar navbar-inverse navbar-fixed-top headroom'>
+				    <div class='container'>
+				      	<div class='navbar-header'>
+				        	<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'><span class='icon-bar'></span> <span class='icon-bar'></span> <span class='icon-bar'></span> </button>
+				        	<a class='navbar-brand' href='http://projet5/home/index/''><img src='../../public/images/logo_test.png' alt='Progressus HTML5 template'></a>
+				      	</div>
+				      	<div class='navbar-collapse collapse'>		
+							<ul class='nav navbar-nav pull-right'>";
+			}
+
+			foreach ($menu as $key => $value) 
+			{
+				$active='';
+				if ($key == self::$page) 
+				{
+					$active = 'active';
+				}
+				if (isset($value['sub_menu']) && !empty($value['sub_menu'])) 
+				{
+					$return.= 			"<li class='dropdown ".$active."'>
+			            					<a href='".$value['lien']."' class='dropdown-toggle' data-toggle='dropdown'>".$key." <b class='caret'></b></a>
+			            					<ul class='dropdown-menu'>";
+					$return .=  				self::ExpandMenu($value['sub_menu']);
+					$return .=				"</ul>
+										</li>";
+				}
+				else
+				{
+					$return .= 			"<li class='".$active."'><a href='".$value['lien']."'>".$key."</a></li>";
+				}
+			}
+
+			if (!$children) {
+				if (empty($_SESSION)) 
+				{
+					if (self::$page=='Login') {
+						$active = 'active';
+					}
+					$return.= 			"<li class='".$active."'><a class='btn' href='http://projet5/login/signin/'>SIGN IN / SIGN UP</a></li>";
+				}
+				else
+				{
+					if (self::$page=='Login') {
+						$active = 'active';
+					}
+					$return.= 			"<li class='".$active."'><a class='btn' href='http://projet5/login/logout/'>LOG OUT</a></li>";
+
+				}
+
+				$return.= "			</ul>
+							</div>
+				    	</div>
+					</div>";
+			}
+
+			return $return;
 		}
 	}
