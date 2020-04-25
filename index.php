@@ -3,6 +3,7 @@
   integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
   crossorigin="anonymous"></script>
 <?php
+
 	session_start();
 	define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 	define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
