@@ -44,11 +44,12 @@
 
 		private function setUsername($Username)
 		{
+
 			$verif_username = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE username = ?',NULL, true, [$Username]);
 			if (empty($Username)) 
 			{
 				$this->message['username'] 	= '<p class="error"> Veuillez renseigner un nom de compte </p>';			
-			}elseif ($verif_username) {
+			}elseif ($verif_username->nb !== '0') {
 				$this->message['username'] 	= '<p class="error"> Nom de compte indisponible </p>';			
 			}
 			$this->Username 			= $Username;
@@ -58,16 +59,19 @@
 		{
 
 			$verif_email = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE email = ?',NULL, true, [$Email]);
+			//var_dump(preg_match('#((a-zA-Z0-9\.-_)@(a-zA-Z-0-9\.-_)\.([a-z]))#',trim($Email)));
+			var_dump(preg_match('#^(([a-zA-Z0-9\.-_])+)@(([a-zA-Z-0-9\.-_])+)\.(([a-z])+)$#',trim($Email)));
+
 
 			if (empty($Email)) 
 			{
 				$this->message['email'] 	= '<p class="error"> Veuillez renseigner un email </p>';			
 			}
-			elseif($verif_email)
+			elseif($verif_email->nb !== '0')
 			{
 				$this->message['email'] 	= '<p class="error"> Email indisponible </p>';			
 			}
-			elseif(preg_match('#((a-zA-Z0-9\.-_)@(a-zA-Z-0-9\.-_)\.([a-z]))#',trim($Email)))
+			elseif(preg_match('#^(([a-zA-Z0-9\.-_])+)@(([a-zA-Z-0-9\.-_])+)\.(([a-z])+)$#',trim($Email)) === 0)
 			{
 				$this->message['email'] 	= '<p class="error"> Email non valide </p>';			
 				
@@ -135,8 +139,8 @@
 			$headers = "From: <fexus.j.sebastien@gmail.com>\n";
 			$headers .= "Reply-To: fexus.j.sebastien@gmail.com\n";
 			$headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
-			mail($destinataire,$sujet,$message,$headers);
+			//mail($destinataire,$sujet,$message,$headers);
 
-			header('Location: http://projet5/login/signin/validate');
+		//	header('Location: http://projet5/login/signin/validate');
 		}
 	}

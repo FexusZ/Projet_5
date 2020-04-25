@@ -44,9 +44,9 @@
 
 		function setEmail($email)
 		{
-			if (!empty($email) && preg_match('#((a-zA-Z0-9\.-_)@(a-zA-Z-0-9\.-_)\.([a-z]))#',trim($Email))) {
+			if (!empty($email) && preg_match('#^(([a-zA-Z0-9\.-_])+)@(([a-zA-Z-0-9\.-_])+)\.(([a-z])+)$#',trim($email)) === 1) {
 				$this->email = $email;
-			}elseif (!empty($email)) {
+			}elseif (empty($email)) {
 				$this->message['email'] .='<p class="error"> Merci de remplir un Email valide </p>';
 			}else{
 				$this->message['email'] .='<p class="error"> Merci de remplir le champs Email </p>';
