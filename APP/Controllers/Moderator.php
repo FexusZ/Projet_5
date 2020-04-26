@@ -10,7 +10,7 @@
 
 		function check_comment()
 		{
-			$param['comment'] = $this->Moderator->getNotValidateComment();
+			$param['post'] = $this->Moderator->getNotValidatePost();
 			$this->set($param);			
 			$this->render('check_comment');
 		}

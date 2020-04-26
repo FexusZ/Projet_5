@@ -1,4 +1,3 @@
-
 <div class="container container3">
 	<div class="row">
 		<?php foreach ($all as $key => $value):?>

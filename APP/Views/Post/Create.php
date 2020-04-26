@@ -6,7 +6,7 @@
     }else{
 		if (isset($_POST) && !empty($_POST)) {
 			$post = new APP\Post\PostCreate($_POST['title'],$_POST['chapo'],$_POST['content'],intval($_SESSION['login']->ID));
-			$message = $last_id = $post->insert();
+			$message = $post->insert();
 		}
 	?>
 
