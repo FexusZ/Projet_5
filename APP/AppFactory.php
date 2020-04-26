@@ -14,7 +14,7 @@
 		*/
 		private static function getDb()
 		{
-			if (is_null(self::$db)) 
+			if (self::$db === NULL) 
 			{
 				self::$db = new Database(DB_NAME, DB_USER, DB_PASS, DB_HOST);
 			}
@@ -73,9 +73,6 @@
 												'Confirmer les commentaires'	=>	array(
 												'lien'	=>	'http://projet5/moderator/check_comment/'
 												),
-												'Gérer les utilisateurs'	=>	array(
-												'lien'	=>	'http://projet5/moderator/check_user/'
-												)
 											)
 										);
 			}

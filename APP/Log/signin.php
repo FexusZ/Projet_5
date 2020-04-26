@@ -49,7 +49,6 @@
 									':username'		=>	$this->Username,
 									':password'		=>	$this->Password
 								]);
-
 			return $this->hydrate($param);
 		}
 
@@ -63,7 +62,6 @@
 			{
 				return '<p class="error">Compte non validé </p>';
 			}
-			
 			$_SESSION['login'] = $param;
 			\APP\AppFactory::header('Location: http://projet5/home/index/');
 		}

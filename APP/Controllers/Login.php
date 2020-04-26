@@ -47,7 +47,6 @@
 			{
 				$message = '<p class="error">Le token indiqué ne correspond a aucun compte</p>';
 			}
-
 			$param['message'] = $message;
 			$param['token'] = $token;
 			$this->set($param);

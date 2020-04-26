@@ -16,11 +16,7 @@
 				if (method_exists($this, $method)) 
 				{
 					$this->$method($value);
-				}
-				else
-				{
-					exit('Error.');
-				}		
+				}	
 			}
 		}
 
@@ -30,7 +26,6 @@
 			{
 				$this->message['password'] 	= '<p class="error"> Veuillez renseigner un mot de passe </p>';			
 			}
-			$this->Password 			= $Password;
 		}
 
 		private function setConfirm_password($Confirm_password)
@@ -60,7 +55,6 @@
 
 		public function send()
 		{
-
 			if (!empty($this->message['email'])) 
 			{
 				return $this->message;
@@ -72,7 +66,6 @@
 									':token'		=>	$this->token,
 									':password'		=>	$this->Password
 								]);
-
 			\APP\AppFactory::header('Location: http://projet5/login/signin/change_pass');
 		}
 	}

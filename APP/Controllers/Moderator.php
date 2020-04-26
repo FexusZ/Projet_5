@@ -14,9 +14,4 @@
 			$this->set($param);			
 			$this->render('check_comment');
 		}
-
-		function check_user()
-		{
-			$this->render('check_user');
-		}
 	}

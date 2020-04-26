@@ -16,10 +16,6 @@
 				if (method_exists($this, $method)) 
 				{
 					$this->$method($value);
-				}
-				else
-				{
-					exit('Error.');
 				}		
 			}
 		}
@@ -30,7 +26,6 @@
 			{
 				$this->message['firstname'] 	= '<p class="error"> Veuillez renseigner un prenom </p>';			
 			}
-			$this->First_name 			= $First_name;
 		}
 
 		private function setLast_name($Last_name)
@@ -39,7 +34,6 @@
 			{
 				$this->message['lastname'] 	= '<p class="error"> Veuillez renseigner un nom </p>';			
 			}
-			$this->Last_name 			= $Last_name;
 		}
 
 		private function setUsername($Username)
@@ -52,7 +46,6 @@
 			}elseif ($verif_username->nb !== '0') {
 				$this->message['username'] 	= '<p class="error"> Nom de compte indisponible </p>';			
 			}
-			$this->Username 			= $Username;
 		}
 
 		private function setEmail($Email)
@@ -71,9 +64,7 @@
 			elseif(preg_match('#^(([a-zA-Z0-9\.-_])+)@(([a-zA-Z-0-9\.-_])+)\.(([a-z])+)$#',trim($Email)) === 0)
 			{
 				$this->message['email'] 	= '<p class="error"> Email non valide </p>';			
-				
 			}
-			$this->Email 				= $Email;
 		}
 
 		private function setPassword($Password)
@@ -82,7 +73,6 @@
 			{
 				$this->message['Password'] 	= '<p class="error"> Veuillez renseigner un mot de passe </p>';			
 			}
-			$this->Password 			= $Password;
 		}
 
 		private function setConfirm_password($Confirm_password)
@@ -107,13 +97,10 @@
 
 		public function signup()
 		{
-
 			if (!empty($this->message['firstname']) || !empty($this->message['lastname']) || !empty($this->message['username']) || !empty($this->message['email']) || !empty($this->message['Password']) || !empty($this->message['Confirm_password']) || !empty($this->message['password2'])) {
 				return $this->message;
 			}
 			$token = bin2hex(random_bytes(64));
-
-
 			\APP\AppFactory::query('INSERT INTO client(firstname, lastname, username, email, password, acces, registration, token)
 								VALUES(:firstname, :lastname, :username, :email, :password, :access, :registration, :token)',
 								NULL, 'No', 
@@ -127,9 +114,6 @@
 									':registration'	=>	time(),
 									':token'		=>	$token
 								]);
-
-
-
 			$sujet = 'Valider votre compte';
 			$message = '<a href="http://projet5/login/token/'.$token.'"> Valider mon compte </a>';
 			$destinataire = $this->Email;
@@ -137,7 +121,6 @@
 			$headers .= "Reply-To: fexus.j.sebastien@gmail.com\n";
 			$headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
 			\APP\AppFactory::mail($destinataire,$sujet,$message,$headers);
-
 			\APP\AppFactory::header('Location: http://projet5/login/signin/validate');
 		}
 	}
