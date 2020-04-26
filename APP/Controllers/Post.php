@@ -18,6 +18,7 @@
 		function post($id)
 		{
 			$param['post'] = $this->Post->getPost($id);
+			$param['comment'] = $this->Comment->getAll($id);
 			$this->set($param);
 			$this->render('post');
 		}

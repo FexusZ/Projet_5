@@ -16,10 +16,20 @@
 		
 		public function delete()
 		{
-			AppFactory::query('DELETE FROM post WHERE ID = :id',
+
+			if (!empty($this->message['id_user']) ||!empty($this->message['id_post'])) 
+			{
+				return $this->message;
+			}
+			else
+			{
+				AppFactory::query('DELETE FROM post WHERE ID = :id',
 				NULL, 'No',
 				[
 					':id'	=>	$this->ID
 				]);
+				header('Location: http://projet5/home/index');
+			}
+
 		}
 	}

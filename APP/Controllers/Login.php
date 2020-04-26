@@ -6,9 +6,6 @@
 	 */
 	class Login extends \Core\MVC\Controllers
 	{
-
-		protected $models = array('Post');
-
 		function signin()
 		{
 			$this->render('signin');

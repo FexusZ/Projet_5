@@ -24,19 +24,27 @@
 
 		public function setId_user($id)
 		{
-			$test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id', 
-				 NULL, true, array(':id' => $id));
-			var_dump($test_id);
-			if (is_int($id) && $test_id) {
+			$test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id', NULL, true, array(':id' => $id));
+			if (is_int($id) && $test_id) 
+			{
 				$this->ID_user = $id;
-			}else{
-				exit('ID d\'utilisateur incorrect.');
+			}
+			else
+			{
+				$this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>';
 			}
 		}
 
 		public function insert()
 		{
-			AppFactory::query('INSERT INTO post(title, chapo, content, ID_user, update_ID_user, last_update, post_date)
+
+			if (!empty($this->message['title']) || !empty($this->message['chapo']) || !empty($this->message['content']) || !empty($this->message['id_user'])) 
+			{
+				return $this->message;
+			}
+			else
+			{
+				AppFactory::query('INSERT INTO post(title, chapo, content, ID_user, update_ID_user, last_update, post_date)
 				VALUES(:title, :chapo, :content, :ID_user, :ID_user, :last_update, :post_date)',
 				NULL, 'No',
 				[
@@ -47,7 +55,8 @@
 					':last_update'	=>	$this->last_update,
 					':post_date'	=>	$this->post_date
 				]);
-			$last_id = AppFactory::query('SELECT MAX(ID) as ID FROM post', NULL, true)->ID;
-			return $last_id;
+				$last_id = AppFactory::query('SELECT MAX(ID) as ID FROM post', NULL, true)->ID;
+				header('Location:http://projet5/post/post/'.$last_id);
+			}
 		}
 	}

@@ -21,7 +21,7 @@
 			extract($this->vars);
 			ob_start();
 
-			require(ROOT.str_replace('\\', '/', str_replace('Controllers', 'Views',get_class($this))).'/'.$filename.'.php');
+			require ROOT.str_replace('\\', '/', str_replace('Controllers', 'Views',get_class($this))).'/'.$filename.'.php';
 
 			$content = ob_get_clean();
 
@@ -31,7 +31,7 @@
 			}
 			else
 			{
-				require(ROOT.'APP/Views/template/'.$this->template.'.php');
+				require ROOT.'APP/Views/template/'.$this->template.'.php';
 			}
 		}
 

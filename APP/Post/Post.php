@@ -14,6 +14,7 @@
 		protected $ID_user;
 		protected $last_update;
 		protected $post_date;
+		protected $message;
 
 		function __construct()
 		{
@@ -22,46 +23,49 @@
 
 		protected function setTitle($title)
 		{
-			if ($title != NULL && $title != '' && strlen($title) <= 32) 
+			if ($title !== NULL && $title !== '' && strlen($title) <= 32) 
 			{
 				$this->title = $title;
 			}
-			elseif($title == NULL && $title == '')
+			elseif($title === NULL && $title === '')
 			{
-				exit('Veuillez ajouter un titre.');
+				$this->message['title'] = '<p class="error">Veuillez ajouter un titre.</p>';
 			}
 			else
 			{
-				exit('Titre trop long, 32 Caractere maximum.');
+				$this->message['title'] = '<p class="error">Titre trop long, 32 Caractere maximum.</p>';
 			}
 		}
 
 		protected function setChapo($chapo)
 		{
-			if ($chapo != NULL && $chapo != '' && strlen($chapo) <= 100) 
+			if ($chapo !== NULL && $chapo !== '' && strlen($chapo) <= 100)  
 			{
 				$this->chapo = $chapo;
 			}
-			elseif($chapo == NULL && $chapo == '')
+			elseif($this->content !== NULL && $this->content !== '')
 			{
 				$this->chapo = substr($this->content, 0 , 100);
 			}
+			elseif($chapo === NULL || $chapo === '' || $this->content === NULL || $this->content === '')
+			{
+				$this->message['chapo'] = '<p class="error">Veuillez remplir le chapo et/ou le contenu.</p>';
+			}
 			else
 			{
-				exit('Chapo trop long, 100 Caractere maximum.');
+				$this->message['chapo'] = '<p class="error">Chapo trop long, 100 Caractere maximum.</p>';
 			}
-			$this->chapo = $chapo;
 		}
 
 		protected function setContent($content)
 		{
-			if ($content != NULL && $content != '') 
+			if ($content !== NULL && $content !== '') 
 			{
 				$this->content = $content;
 			}
 			else
 			{
-				exit('Veuillez ajouter un titre.');
+				$this->message['content'] = '<p class="error">Veuillez ajouter du contenu.</p>';
 			}
 		}
 
@@ -77,7 +81,7 @@
 			}
 			else
 			{
-				exit('ID de post incorrect.');
+				$this->message['id_post'] = '<p class="error">ID de post incorrect.</p>';
 			}
 		}
 
@@ -91,7 +95,7 @@
 			}
 			else
 			{
-				exit('ID d\'utilisateur incorrect.');
+				$this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>';
 			}
 		}
 

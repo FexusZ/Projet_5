@@ -27,7 +27,13 @@
 
 		public function update()
 		{
-			AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update, post_date = :post_date WHERE ID = :id',
+			if (!empty($this->message['title']) || !empty($this->message['chapo']) || !empty($this->message['content']) || !empty($this->message['id_user']) || !empty($this->message['id_post'])) 
+			{
+				return $this->message;
+			}
+			else
+			{
+				AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update, post_date = :post_date WHERE ID = :id',
 				NULL, 'No',
 				[
 					':title'		=>	$this->title,
@@ -38,5 +44,8 @@
 					':post_date'	=>	$this->post_date,
 					':id'			=>	$this->ID
 				]);
+				header('Location: http://projet5/post/post/'.$this->ID);
+
+			}
 		}
 	}

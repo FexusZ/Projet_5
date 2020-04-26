@@ -42,11 +42,11 @@
 		public static function getMenu($page)
 		{
 			$menu = array(
-				'Home'	=>	array(
+				'Accueil'	=>	array(
 					'lien'		=>	'http://projet5/home/index/'
 				),
 
-				'Post'	=>	array(
+				'Article'	=>	array(
 					'lien'		=>	'http://projet5/post/index/',
 					'sub_menu'	=>	array(
 						
@@ -59,21 +59,21 @@
 				)
 			);
 			if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
-				$menu['Post']['sub_menu'] = array(
-												'Post'	=>	array(
+				$menu['Article']['sub_menu'] = array(
+												'Tous les articles'	=>	array(
 													'lien'		=>	'http://projet5/post/index/',
 												),
-												'Create'	=>	array(
+												'Creation d\'article'	=>	array(
 													'lien'	=>	'http://projet5/post/create/'
 												),
 											);
 				$menu['Moderation'] = array(
 											'lien'	=>	"",
 											'sub_menu'	=>	array(
-												'Confirmer commentaire'	=>	array(
+												'Confirmer les commentaires'	=>	array(
 												'lien'	=>	'http://projet5/moderator/check_comment/'
 												),
-												'Utilisateur'	=>	array(
+												'Gérer les utilisateurs'	=>	array(
 												'lien'	=>	'http://projet5/moderator/check_user/'
 												)
 											)

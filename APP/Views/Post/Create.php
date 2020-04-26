@@ -6,32 +6,36 @@
     }else{
 		if (isset($_POST) && !empty($_POST)) {
 			$post = new APP\Post\PostCreate($_POST['title'],$_POST['chapo'],$_POST['content'],intval($_SESSION['login']->ID));
-			$last_id = $post->insert();
-			header('Location:http://projet5/post/post/'.$last_id);
+			$message = $last_id = $post->insert();
 		}
 	?>
 
 	<style type="text/css">
-		
-		.title{
+		.title
+		{
 			margin-top: 20px;
-			width: 270px;
+			width: 70%;
+			/*width: 270px;*/
 			text-align: center;
 			font-size: 20px;
 		}
-		.chapo{
+		.chapo
+		{
 			font-size: 20px;
 		}
-		.content{
+		.content
+		{
 			margin-top: 20px;
 			font-size: 20px;
 			min-height: 250px !important;
 
 		}
-		.post{
+		.post
+		{
 			text-align: center;
 		}
-		#input_post{
+		#input_post
+		{
 			margin-top:20px;
 		}
 	</style>
@@ -41,15 +45,21 @@
 			<form method="post">
 				<h2>Création d'un Post</h2>
 				<input type="text" name="title" class="form-control title" placeholder="Titre">
+				<?php if (!empty($message['title'])) echo $message['title']; ?>
 
 				<h3 Title="Le chapô est un résumé du contenu de l'article, si il n'est pas rempli il reprendra les 150 premier caractere du contenu."> Chapô : </h3>
 		  		<textarea name='chapo' class="form-control chapo" aria-label="With textarea"></textarea>
+				<?php if (!empty($message['chapo'])) echo $message['chapo']; ?>
 
 
 		  		<textarea name='content' class="form-control content" aria-label="With textarea"></textarea>
+				<?php if (!empty($message['content'])) echo $message['content']; ?>
+
 		  		<p id='input_post'>
 		  			<input type="submit" value="Créer" class='btn'>
 		  		</p>
+				<?php if (!empty($message['id_user'])) echo $message['id_user']; ?>
+
 	  		</form>
 		</div>
 	</div>

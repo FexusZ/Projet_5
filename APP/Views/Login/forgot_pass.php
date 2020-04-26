@@ -10,19 +10,7 @@
         $message =  $test->send();
     }
 ?>
-<style type="text/css">
-    .error
-    {
-        color:red;
-        text-align: center;
-    }
-
-    .success
-    {
-        color:green;
-        text-align: center;
-    }
-    
+<style type="text/css">   
     .col-lg-4-sign
     {
     	margin-top:20px;

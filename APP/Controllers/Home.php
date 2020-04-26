@@ -20,4 +20,9 @@
 		{
 			$this->render('cv');
 		}
+
+		function condition_utilisation()
+		{
+			$this->render('condition_utilisation');
+		}
 	}
