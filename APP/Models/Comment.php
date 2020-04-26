@@ -32,11 +32,11 @@
  			$author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID'	=>	$this->ID_user])->author;
 
 
- 			return '<p>'.$author.' ecrit le : '.date('d-m-Y', $this->post_date).'</p>';
+ 			return '<p>'.$author.' le : '.date('d-m-Y', $this->post_date).'</p>';
  		}
 
  		function getContent()
  		{
- 			return '<p>'. $this->comment .'</p>';
+ 			return '<p>'. nl2br($this->comment) .'</p>';
  		}
 	}

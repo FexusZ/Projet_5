@@ -1,1 +1,0 @@
-<iframe src="\public\images\CV.pdf" style="width: 100%;height: 100%;padding-top: 100px;margin-bottom: -50px;"></iframe>

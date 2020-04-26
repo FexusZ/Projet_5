@@ -6,10 +6,12 @@
 	 */
 	class Moderator extends \Core\MVC\Controllers
 	{
-		protected $models = array('Post', 'Comment');
+		protected $models = array('Moderator');
 
 		function check_comment()
 		{
+			$param['comment'] = $this->Moderator->getNotValidateComment();
+			$this->set($param);			
 			$this->render('check_comment');
 		}
 

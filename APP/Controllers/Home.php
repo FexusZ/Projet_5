@@ -6,9 +6,7 @@
 	 */
 	class Home extends \Core\MVC\Controllers
 	{
-
 		protected $models = array('Post');
-
 		function index()
 		{
 			$param['last_post'] = $this->Post->getLast();
@@ -16,9 +14,9 @@
 			$this->render('index');
 		}
 
-		function cv()
+		function up_cv()
 		{
-			$this->render('cv');
+			$this->render('up_cv');
 		}
 
 		function condition_utilisation()

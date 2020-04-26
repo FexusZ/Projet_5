@@ -32,8 +32,6 @@
 									[
 										':token'	=>	$token
 									]);
-
-
 			if ($test_token) 
 			{
 				if ($test_token->pass_token == 0) 
@@ -50,7 +48,6 @@
 				$message = '<p class="error">Le token indiqué ne correspond a aucun compte</p>';
 			}
 
-
 			$param['message'] = $message;
 			$param['token'] = $token;
 			$this->set($param);
@@ -63,8 +60,6 @@
 									[
 										':token'	=>	$token
 									]);
-
-
 			if ($test_token) 
 			{
 				if ($test_token->token_use == 0) 
@@ -84,7 +79,6 @@
 			{
 				$message = '<p class="error">Le token indiqué ne correspond a aucun compte</p>';
 			}
-
 
 			$param['token'] = $message;
 			$this->set($param);

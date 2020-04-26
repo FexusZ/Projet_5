@@ -1,4 +1,4 @@
 <?php
 
-session_destroy();
-header('Location:http://projet5');
+session_unset();
+APP\AppFactory::header('Location:http://projet5');

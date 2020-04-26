@@ -65,6 +65,6 @@
 			}
 			
 			$_SESSION['login'] = $param;
-			header('Location: http://projet5/home/index/');
+			\APP\AppFactory::header('Location: http://projet5/home/index/');
 		}
 	}

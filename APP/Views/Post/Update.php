@@ -2,7 +2,7 @@
 
 	if (!isset($_SESSION['login']) || $_SESSION['login']->acces != 10 || empty($post)) 
     {
-        header('Location: http://projet5/home/index/');
+        \APP\AppFactory::header('Location: http://projet5/home/index/');
     }
     else
     {

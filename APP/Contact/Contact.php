@@ -71,7 +71,6 @@
 			}
 		}
 
-
 		function send(){
 			if (!empty($this->message['content']) || !empty($this->message['subject']) || !empty($this->message['email']) || !empty($this->message['name'])) {
 				return $this->message;
@@ -82,9 +81,7 @@
 			$headers .= "Reply-To: ".$this->email."\n";
 			$headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
 
-			mail('fexus.j.sebastien@gmail.com',$this->subject,$this->content,$headers);
-
-			// header('Location: http://projet5/login/signin/');
+			\APP\AppFactory::mail('fexus.j.sebastien@gmail.com',$this->subject,$this->content,$headers);
 			return $this->message;
 		}
 	}

@@ -40,6 +40,7 @@
 
  		function getPost_chapo()
  		{
+ 			str_replace("\n", '</br>', $this->chapo);
  			return '<p>'. $this->chapo . '... <a href='. $this->getUrl() .'>Voir la suite</a>';
  		}
 
@@ -57,6 +58,6 @@
 
  		function getPost_content()
  		{
- 			return '<p>'.$this->chapo.'</p><p>'. $this->content .'</p>';
+ 			return '<p>'.nl2br($this->chapo).'</p><p>'. nl2br($this->content) .'</p>';
  		}
 	}

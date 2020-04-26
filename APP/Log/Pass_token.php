@@ -73,6 +73,6 @@
 									':password'		=>	$this->Password
 								]);
 
-			header('Location: http://projet5/login/signin/change_pass');
+			\APP\AppFactory::header('Location: http://projet5/login/signin/change_pass');
 		}
 	}

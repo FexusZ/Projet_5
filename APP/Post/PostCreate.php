@@ -56,7 +56,7 @@
 					':post_date'	=>	$this->post_date
 				]);
 				$last_id = AppFactory::query('SELECT MAX(ID) as ID FROM post', NULL, true)->ID;
-				header('Location:http://projet5/post/post/'.$last_id);
+				AppFactory::header('Location:http://projet5/post/post/'.$last_id);
 			}
 		}
 	}

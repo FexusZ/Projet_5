@@ -28,7 +28,7 @@
 				[
 					':id'	=>	$this->ID
 				]);
-				header('Location: http://projet5/home/index');
+				AppFactory::header('Location: http://projet5/home/index');
 			}
 
 		}

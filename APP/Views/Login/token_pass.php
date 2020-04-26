@@ -1,7 +1,7 @@
 <?php
     if (isset($_SESSION['login'])) 
     {
-        header('Location: http://projet5/home/index/');
+        APP\AppFactory::header('Location: http://projet5/home/index/');
     }
 
     if (isset($_POST) && !empty($_POST)) 

@@ -147,4 +147,14 @@
 
 			return $return;
 		}
+
+		public static function header($header)
+		{
+			header($header);
+		}
+
+		public static function mail($to, $subject, $message, $header)
+		{
+			mail($to, $subject, $message, $header);
+		}	
 	}

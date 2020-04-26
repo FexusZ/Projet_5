@@ -56,8 +56,8 @@
 			$headers = "From: <fexus.j.sebastien@gmail.com>\n";
 			$headers .= "Reply-To: fexus.j.sebastien@gmail.com\n";
 			$headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
-			mail($destinataire,$sujet,$message,$headers);
+			\APP\AppFactory::mail($destinataire,$sujet,$message,$headers);
 
-			header('Location: http://projet5/login/signin/validate_pass');
+			\APP\AppFactory::header('Location: http://projet5/login/signin/validate_pass');
 		}
 	}
