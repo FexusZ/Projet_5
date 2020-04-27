@@ -1,7 +1,7 @@
 <?php
     if (isset($_SESSION['login'])) 
     {
-        APP\AppFactory::header('Location: http://projet5/home/index/');
+        APP\AppFactory::header('Location: /home/index/');
     }
 
     if (isset($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
@@ -35,10 +35,10 @@
                 <div class="panel-body">
                     <h3 class="thin text-center">Connexion au compte</h3>
                     <p class="text-center text-muted">
-                        <a href="http://projet5/login/signup/">Créer un compte</a> 
+                        <a href="/login/signup/">Créer un compte</a> 
                     </p>
                     <hr>
-                    <form method="post" action='http://projet5/login/signin/'>
+                    <form method="post" action='/login/signin/'>
                         <div class="top-margin">
                             <label>Username/Email <span class="text-danger">*</span></label>
                             <input name='username' type="text" class="form-control">
@@ -50,7 +50,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-8">
-                                <b><a href="http://projet5/login/forgot_pass/">Mot de passe oublié?</a></b>
+                                <b><a href="/login/forgot_pass/">Mot de passe oublié?</a></b>
                             </div>
                             <div class="col-lg-4 text-right">
                                 <button class="btn btn-action" type="submit">Connexion</button>

@@ -35,7 +35,7 @@
 
  		function getUrl()
  		{
- 			return 'http://projet5/post/post/'. $this->ID;
+ 			return '/post/post/'. $this->ID;
  		}
 
  		function getPost_chapo()

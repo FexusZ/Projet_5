@@ -41,6 +41,13 @@
 
 			call_user_func_array(array($controller, $action), $param);
 		}
+		else
+		{
+			echo APP\AppFactory::getMenu('Accueil');
+			$controller = new APP\Controllers\Home;
+			call_user_func_array(array($controller, 'error'), array());
+
+		}
 	}
 	else
 	{

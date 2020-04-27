@@ -44,7 +44,7 @@
 					':post_date'	=>	$this->post_date,
 					':id'			=>	$this->ID
 				]);
-				AppFactory::header('Location: http://projet5/post/post/'.$this->ID);
+				AppFactory::header('Location: /post/post/'.$this->ID);
 
 			}
 		}

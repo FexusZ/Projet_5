@@ -1,7 +1,7 @@
 <?php
     if (isset($_SESSION['login'])) 
     {
-        APP\AppFactory::header('Location: http://projet5/home/index/');
+        APP\AppFactory::header('Location: /home/index/');
     }
 
     if (isset($_POST) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['token'])) 

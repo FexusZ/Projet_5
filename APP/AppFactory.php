@@ -43,11 +43,11 @@
 		{
 			$menu = array(
 				'Accueil'	=>	array(
-					'lien'		=>	'http://projet5/home/index/'
+					'lien'		=>	'/home/index/'
 				),
 
 				'Article'	=>	array(
-					'lien'		=>	'http://projet5/post/index/',
+					'lien'		=>	'/post/index/',
 					'sub_menu'	=>	array(
 						
 						
@@ -55,23 +55,23 @@
 				),
 
 				'Contact'	=>	array(
-					'lien'		=>	'http://projet5/contact/contact/'
+					'lien'		=>	'/contact/contact/'
 				)
 			);
 			if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
 				$menu['Article']['sub_menu'] = array(
 												'Tous les articles'	=>	array(
-													'lien'		=>	'http://projet5/post/index/',
+													'lien'		=>	'/post/index/',
 												),
 												'Creation d\'article'	=>	array(
-													'lien'	=>	'http://projet5/post/create/'
+													'lien'	=>	'/post/create/'
 												),
 											);
 				$menu['Moderation'] = array(
 											'lien'	=>	"",
 											'sub_menu'	=>	array(
 												'Confirmer les commentaires'	=>	array(
-												'lien'	=>	'http://projet5/moderator/check_comment/'
+												'lien'	=>	'/moderator/check_comment/'
 												),
 											)
 										);
@@ -90,7 +90,7 @@
 				    <div class='container'>
 				      	<div class='navbar-header'>
 				        	<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'><span class='icon-bar'></span> <span class='icon-bar'></span> <span class='icon-bar'></span> </button>
-				        	<a class='navbar-brand' href='http://projet5/home/index/''><img src='../../public/images/logo_test.png' alt='Progressus HTML5 template'></a>
+				        	<a class='navbar-brand' href='/home/index/''><img src='../../public/images/logo_test.png' alt='Progressus HTML5 template'></a>
 				      	</div>
 				      	<div class='navbar-collapse collapse'>		
 							<ul class='nav navbar-nav pull-right'>";
@@ -125,11 +125,11 @@
 					if (self::$page=='Login') {
 						$active = 'active';
 					}
-					$return.= 			"<li class='".$active."'><a class='btn' href='http://projet5/login/signin/'>SIGN IN / SIGN UP</a></li>";
+					$return.= 			"<li class='".$active."'><a class='btn' href='/login/signin/'>SIGN IN / SIGN UP</a></li>";
 				}
 				else
 				{
-					$return.= 			"<li><a class='btn' href='http://projet5/login/logout/'>LOG OUT</a></li>";
+					$return.= 			"<li><a class='btn' href='/login/logout/'>LOG OUT</a></li>";
 
 				}
 

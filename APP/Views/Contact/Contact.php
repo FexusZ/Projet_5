@@ -18,7 +18,7 @@
 </style>
 <div class="container container3">
 	<ol class="breadcrumb">
-		<li><a href="http://projet5/home/index/">Home</a></li>
+		<li><a href="/home/index/">Home</a></li>
 		<li class="active">Contact</li>
 	</ol>
 	<div class="row">

@@ -1,7 +1,7 @@
 <?php
 	if (!isset($_SESSION['login']) || $_SESSION['login']->acces != 10) 
     {
-        APP\AppFactory::header('Location: http://projet5/home/index/');
+        APP\AppFactory::header('Location: /home/index/');
     }else{
 		if (isset($_POST) && !empty($_POST['id_comment'])) 
 		{

@@ -1,7 +1,7 @@
 <?php
     if (empty($post)) 
     {
-        APP\AppFactory::header('Location: http://projet5/home/index/');
+        APP\AppFactory::header('Location: /home/index/');
     }
     else
     {
@@ -28,7 +28,7 @@
 
             <?php
                 if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
-                    echo "<a href='http://projet5/post/update/".$post->ID."'> Modifier le post </a>";
+                    echo "<a href='/post/update/".$post->ID."'> Modifier le post </a>";
                 }
             ?>
         </div>  

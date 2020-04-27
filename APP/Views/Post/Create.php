@@ -2,7 +2,7 @@
 
 	if (!isset($_SESSION['login']) || $_SESSION['login']->acces != 10) 
     {
-        APP\AppFactory::header('Location: http://projet5/home/index/');
+        APP\AppFactory::header('Location: /home/index/');
     }else{
 		if (isset($_POST) && !empty($_POST['title']) && !empty($_POST['chapo'])  && !empty($_POST['content'])) {
 			$post = new APP\Post\PostCreate($_POST['title'],$_POST['chapo'],$_POST['content'],intval($_SESSION['login']->ID));

@@ -23,4 +23,9 @@
 		{
 			$this->render('condition_utilisation');
 		}
+
+		function error()
+		{
+			$this->render('error');
+		}
 	}

@@ -1,6 +1,6 @@
 <?php
     if (isset($_SESSION['login'])) {
-        APP\AppFactory::header('Location: http://projet5/home/index/');
+        APP\AppFactory::header('Location: /home/index/');
     }
     if (isset($_POST) && !empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])) {
         $test = new APP\Log\signup($_POST);
@@ -33,7 +33,7 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<h3 class="thin text-center">Création d'un compte</h3>
-			<p class="text-center text-muted">Vous avez déjà un compte ? <a href="http://projet5/login/signin/">Connectez vous</a></p>
+			<p class="text-center text-muted">Vous avez déjà un compte ? <a href="/login/signin/">Connectez vous</a></p>
 			<hr>
 			<form method='post'>
 				<div class="top-margin">

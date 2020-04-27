@@ -59,6 +59,6 @@
 				return '<p class="error">Compte non validé </p>';
 			}
 			$_SESSION['login'] = $param;
-			\APP\AppFactory::header('Location: http://projet5/home/index/');
+			\APP\AppFactory::header('Location: /home/index/');
 		}
 	}

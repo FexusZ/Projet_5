@@ -46,6 +46,6 @@
 									':token'		=>	$this->token,
 									':password'		=>	$this->Password
 								]);
-			\APP\AppFactory::header('Location: http://projet5/login/signin/change_pass');
+			\APP\AppFactory::header('Location: /login/signin/change_pass');
 		}
 	}
