@@ -3,7 +3,12 @@
   integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
   crossorigin="anonymous"></script>
 <?php
-
+	$page = array(
+					'home'	=>	'Accueil',
+					'post'	=>	'Article',
+					'moderator'	=>	'Moderation'
+	
+				);
 	session_start();
 	define('WEBROOT', str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
 	define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
@@ -26,6 +31,10 @@
 		$controller = new $controller();
 		if (method_exists($controller, $action)) 
 		{
+			if (isset($page[$param[0]]) && !empty($page[$param[0]]))
+			{
+				$param[0] = $page[$param[0]];
+			}
 			echo APP\AppFactory::getMenu(ucfirst($param[0]));
 			unset($param[0]);
 			unset($param[1]);
@@ -35,7 +44,7 @@
 	}
 	else
 	{
-		echo APP\AppFactory::getMenu('Home');
+		echo APP\AppFactory::getMenu('Accueil');
 		$controller = new APP\Controllers\Home;
 		call_user_func_array(array($controller, 'index'), array());
 	}

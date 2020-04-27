@@ -15,11 +15,7 @@
 				if (method_exists($this, $method)) 
 				{
 					$this->$method($value);
-				}
-				else
-				{
-					exit('Error.');
-				}		
+				}	
 			}
 		}
 

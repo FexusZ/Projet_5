@@ -76,16 +76,15 @@
 											)
 										);
 			}
-			self::$page = $page;
+
+			self::$page = $page?:'Accueil';
 			return 	self::ExpandMenu($menu, false);
 		}
 
 		private static function ExpandMenu($menu, $children = true)
 		{	
-			if ($children) {
-				$return = '';
-			}else{
-
+			$return = '';
+			if (!$children) {
 				$return = "
 				<div class='navbar navbar-inverse navbar-fixed-top headroom'>
 				    <div class='container'>
@@ -120,6 +119,7 @@
 			}
 
 			if (!$children) {
+				$active = '';
 				if (empty($_SESSION)) 
 				{
 					if (self::$page=='Login') {
@@ -129,10 +129,7 @@
 				}
 				else
 				{
-					if (self::$page=='Login') {
-						$active = 'active';
-					}
-					$return.= 			"<li class='".$active."'><a class='btn' href='http://projet5/login/logout/'>LOG OUT</a></li>";
+					$return.= 			"<li><a class='btn' href='http://projet5/login/logout/'>LOG OUT</a></li>";
 
 				}
 

@@ -9,8 +9,10 @@
         $test = new APP\Log\signin($_POST);
         $message =  $test->signin();
     }
-
-    $param = explode('/', $_GET['p']);
+    if(!empty($_GET['p']))
+    {
+        $param = explode('/', $_GET['p']);
+    }
 ?>
 <style type="text/css">
     .error

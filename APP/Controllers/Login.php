@@ -29,9 +29,7 @@
 		function token_pass($token)
 		{
 			$test_token = \APP\AppFactory::query('SELECT pass_token FROM client WHERE token = :token', NULL, true, 
-									[
-										':token'	=>	$token
-									]);
+									[':token'	=>	$token]);
 			if ($test_token) 
 			{
 				if ($test_token->pass_token == 0) 
