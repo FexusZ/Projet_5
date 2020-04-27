@@ -3,7 +3,7 @@
     {
         APP\AppFactory::header('Location: http://projet5/home/index/');
     }else{
-		if (isset($_POST) && !empty($_POST)) 
+		if (isset($_POST) && !empty($_POST['id_comment'])) 
 		{
 			if (isset($_POST['valide_comment'])) 
 			{

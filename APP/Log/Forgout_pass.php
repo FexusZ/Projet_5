@@ -28,6 +28,10 @@
 			{
 				$this->message['email'] 	= '<p class="error"> Email non valide </p>';			
 			}
+			else
+			{
+				$this->Email = $Email;
+			}
 		}
 
 		public function send()

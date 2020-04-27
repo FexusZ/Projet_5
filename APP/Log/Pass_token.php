@@ -30,7 +30,7 @@
 
 		public function setToken($token)
 		{
-			$this->token = $token;
+			$this->token = htmlspecialchars($token);
 		}
 
 		public function send()

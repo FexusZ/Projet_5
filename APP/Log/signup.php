@@ -26,6 +26,11 @@
 			{
 				$this->message['firstname'] 	= '<p class="error"> Veuillez renseigner un prenom </p>';			
 			}
+			else
+			{
+				$this->First_name = htmlspecialchars($First_name);
+				
+			}
 		}
 
 		private function setLast_name($Last_name)
@@ -33,6 +38,11 @@
 			if (empty($Last_name)) 
 			{
 				$this->message['lastname'] 	= '<p class="error"> Veuillez renseigner un nom </p>';			
+			}
+			else
+			{
+				$this->Last_name = htmlspecialchars($Last_name);
+				
 			}
 		}
 
@@ -45,6 +55,11 @@
 				$this->message['username'] 	= '<p class="error"> Veuillez renseigner un nom de compte </p>';			
 			}elseif ($verif_username->nb !== '0') {
 				$this->message['username'] 	= '<p class="error"> Nom de compte indisponible </p>';			
+			}
+			else
+			{
+				$this->Username = htmlspecialchars($Username);
+				
 			}
 		}
 
@@ -65,6 +80,11 @@
 			{
 				$this->message['email'] 	= '<p class="error"> Email non valide </p>';			
 			}
+			else
+			{
+				$this->Email = htmlspecialchars($Email);
+				
+			}
 		}
 
 		private function setPassword($Password)
@@ -72,6 +92,10 @@
 			if (empty($Password)) 
 			{
 				$this->message['Password'] 	= '<p class="error"> Veuillez renseigner un mot de passe </p>';			
+			}
+			else
+			{
+				$this->Password = htmlspecialchars($Password);
 			}
 		}
 

@@ -4,7 +4,7 @@
         APP\AppFactory::header('Location: http://projet5/home/index/');
     }
 
-    if (isset($_POST) && !empty($_POST)) 
+    if (isset($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
     {
         $test = new APP\Log\signin($_POST);
         $message =  $test->signin();

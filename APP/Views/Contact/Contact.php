@@ -1,5 +1,5 @@
 <?php
-	if (isset($_POST) && !empty($_POST))
+	if (isset($_POST) && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject'])  && !empty($_POST['content']))
 	{
 		$contact = new APP\Contact\Contact($_POST);
 		$message = $contact->send();

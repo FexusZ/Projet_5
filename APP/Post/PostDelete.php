@@ -17,7 +17,7 @@
 		public function delete()
 		{
 
-			if (!empty($this->message['id_user']) ||!empty($this->message['id_post'])) 
+			if (!empty($this->message['id_user']) || !empty($this->message['id_post'])) 
 			{
 				return $this->message;
 			}

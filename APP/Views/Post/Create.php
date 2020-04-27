@@ -4,7 +4,7 @@
     {
         APP\AppFactory::header('Location: http://projet5/home/index/');
     }else{
-		if (isset($_POST) && !empty($_POST)) {
+		if (isset($_POST) && !empty($_POST['title']) && !empty($_POST['chapo'])  && !empty($_POST['content'])) {
 			$post = new APP\Post\PostCreate($_POST['title'],$_POST['chapo'],$_POST['content'],intval($_SESSION['login']->ID));
 			$message = $post->insert();
 		}

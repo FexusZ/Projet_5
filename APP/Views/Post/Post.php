@@ -5,8 +5,6 @@
     }
     else
     {
-
-
         if (!empty($_SESSION['login']) && isset($_POST['comment'])) 
         {
             $new_comment = new APP\Post\PostComment($_POST['comment'], intval($_SESSION['login']->ID), intval($post->ID));

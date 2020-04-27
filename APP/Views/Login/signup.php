@@ -2,11 +2,12 @@
     if (isset($_SESSION['login'])) {
         APP\AppFactory::header('Location: http://projet5/home/index/');
     }
-    if (isset($_POST) && !empty($_POST)) {
+    if (isset($_POST) && !empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])) {
         $test = new APP\Log\signup($_POST);
         $message = $test->signup();
     }
 ?>
+
 <style type="text/css">
     .error
     {

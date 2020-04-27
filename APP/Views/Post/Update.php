@@ -6,7 +6,7 @@
     }
     else
     {
-		if (isset($_POST) && !empty($_POST)) 
+		if (isset($_POST) && !empty($_POST['title']) && !empty($_POST['chapo'])  && !empty($_POST['content']) ) 
 		{
 			if (isset($_POST['update'])) 
 			{

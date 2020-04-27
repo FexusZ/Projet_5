@@ -21,7 +21,7 @@
 
 		private function setUsername($Username)
 		{
-			$this->Username			= $Username;
+			$this->Username			= htmlspecialchars($Username);
 		}
 
 		private function setPassword($Password)

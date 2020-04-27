@@ -4,7 +4,7 @@
         APP\AppFactory::header('Location: http://projet5/home/index/');
     }
 
-    if (isset($_POST) && !empty($_POST)) 
+    if (isset($_POST) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['token'])) 
     {
         $test = new APP\Log\Pass_token($_POST);
         $message =  $test->send();
