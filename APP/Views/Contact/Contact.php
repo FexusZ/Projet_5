@@ -1,6 +1,10 @@
 <?php
-	if (isset($_POST) && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject'])  && !empty($_POST['content'])) {
-		$contact = new APP\Contact\Contact($_POST);
+	if (isset($_POST) && !empty($_POST)) {
+		$array['name']		=	htmlspecialchars($_POST['name']?:'');
+		$array['email']		=	htmlspecialchars($_POST['email']?:'');
+		$array['subject']	=	htmlspecialchars($_POST['subject']?:'');
+		$array['content']	=	htmlspecialchars($_POST['content']?:'');
+		$contact = new APP\Contact\Contact($array);
 		$message = $contact->send();
 	}
 ?>
@@ -32,18 +36,12 @@
 						<div class="col-sm-6">
 							<input class="form-control" type="text" name="name" placeholder="Nom/Prenom">
 							<?php
-							if (isset($message['name']) && !empty($message['name'])) {
-								echo $message['name'];
-							}
-							?>
+							if (isset($message['name']) && !empty($message['name'])) echo $message['name']; ?>
 						</div>
 						<div class="col-sm-6">
 							<input class="form-control" type="text"  name="email" placeholder="Email">
 							<?php
-							if (isset($message['email']) && !empty($message['email'])) {
-								echo $message['email'];
-							}
-							?>
+							if (isset($message['email']) && !empty($message['email'])) echo $message['email']; ?>
 						</div>
 					</div>
 					<br>
@@ -51,10 +49,7 @@
 						<div class="col-sm-12">
 							<input class="form-control" type="text"  name="subject" placeholder="Sujet">
 							<?php
-							if (isset($message['subject']) && !empty($message['subject'])) {
-								echo $message['subject'];
-							}
-							?>
+							if (isset($message['subject']) && !empty($message['subject'])) echo $message['subject']; ?>
 						</div>
 					</div>
 
@@ -63,21 +58,14 @@
 						<div class="col-sm-12">
 							<textarea placeholder="Ecrivez votre message ici..." name='content' class="form-control" rows="9"></textarea>
 							<?php
-							if (isset($message['content']) && !empty($message['content'])) {
-								echo $message['content'];
-							}
-							?>
+							if (isset($message['content']) && !empty($message['content'])) echo $message['content']; ?>
 						</div>
 					</div>
 					<br>
 					<div class="row">
 						<?php
-							if (isset($message['success']) && !empty($message['success'])) {
-								echo $message['success'];
-							}
-							if (isset($message['error']) && !empty($message['error'])) {
-								echo $message['error'];
-							}
+							if (isset($message['success']) && !empty($message['success'])) echo $message['success'];
+							if (isset($message['error']) && !empty($message['error'])) echo $message['error'];
 						?>
 						<div class="col-sm-6">
 						</div>

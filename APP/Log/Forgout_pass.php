@@ -22,9 +22,8 @@
 				$this->message['email'] 	= '<p class="error"> Cette email ne correspond a aucun compte </p>';			
 			} elseif(preg_match('#((a-zA-Z0-9\.-_)@(a-zA-Z-0-9\.-_)\.([a-z]))#',trim($Email))) {
 				$this->message['email'] 	= '<p class="error"> Email non valide </p>';			
-			} else {
-				$this->Email = $Email;
 			}
+			$this->Email = $Email;
 		}
 
 		public function send()

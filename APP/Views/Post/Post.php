@@ -2,8 +2,12 @@
     if (empty($post)) {
         APP\AppFactory::header('Location: /home/index/');
     } else {
-        if (!empty($_SESSION['login']) && isset($_POST['comment'])) {
-            $new_comment = new APP\Post\PostComment($_POST['comment'], intval($_SESSION['login']->ID), intval($post->ID));
+        if (!isset($_SESSION) && isset($_POST)) {
+            $comment = htmlspecialchars($_POST['comment']?:0);
+            $id_session = intval($_SESSION['login']->ID?:0);
+            $id = intval($post->ID?:0);
+            
+            $new_comment = new APP\Post\PostComment($comment, $id_session, $id);
             $message = $new_comment->send();
         }
 ?>
@@ -21,12 +25,7 @@
     		<?= $post->Title ?>
     		<?= $post->Content ?>
     		<?= $post->Author ?>
-
-            <?php
-                if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
-                    echo "<a href='/post/update/".$post->ID."'> Modifier le post </a>";
-                }
-            ?>
+            <?php if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) echo "<a href='/post/update/".$post->ID."'> Modifier le post </a>"; ?>
         </div>  
 	</div>
     <hr>

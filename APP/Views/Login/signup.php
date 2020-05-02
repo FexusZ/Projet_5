@@ -2,8 +2,15 @@
     if (isset($_SESSION['login'])) {
         APP\AppFactory::header('Location: /home/index/');
     }
-    if (isset($_POST) && !empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm_password'])) {
-        $test = new APP\Log\signup($_POST);
+    if (isset($_POST) && !empty($_POST)) {
+
+    	$array['first_name']		=	htmlspecialchars($_POST['first_name']?:'');
+		$array['last_name']		=	htmlspecialchars($_POST['last_name']?:'');
+		$array['username']	=	htmlspecialchars($_POST['username']?:'');
+		$array['email']	=	htmlspecialchars($_POST['email']?:'');
+		$array['password']		=	htmlspecialchars($_POST['password']?:'');
+		$array['confirm_password']		=	htmlspecialchars($_POST['confirm_password']?:'');
+        $test = new APP\Log\signup($array);
         $message = $test->signup();
     }
 ?>

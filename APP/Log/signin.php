@@ -46,6 +46,10 @@
 			return $this->hydrate($param);
 		}
 
+		/**
+ 		* Permet d'hydrater les données a envoyer en session
+ 		* @param array
+ 		*/
 		private function hydrate($param)
 		{
 			if ($param == NULL) {
@@ -54,7 +58,9 @@
 			if ($param->token_use == 0) {
 				return '<p class="error">Compte non validé </p>';
 			}
-			$_SESSION['login'] = $param;
+			$_SESSION['login']->ID = $param->ID;
+			$_SESSION['login']->acces = $param->acces;
+			sleep(2);
 			\APP\AppFactory::header('Location: /home/index/');
 		}
 	}

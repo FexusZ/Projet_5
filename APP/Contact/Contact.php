@@ -17,9 +17,9 @@
 
 				if (method_exists($this, $method)) {
 					$this->$method($value);
-				} else {
-					$this->message['error'] = '<p class="error">Modification de champs interdite</span>';
-				}		
+					continue;
+				}
+				$this->message['error'] = '<p class="error">Modification de champs interdite</span>';		
 			}
 		}
 
@@ -27,9 +27,9 @@
 		{
 			if (!empty($name)) {
 				$this->name = $name;
-			} else {
-				$this->message['name'] ='<p class="error"> Merci de remplir le champs de nom/prenom </p>';
+				return;
 			}
+			$this->message['name'] ='<p class="error"> Merci de remplir le champs de nom/prenom </p>';
 		}
 
 		function setEmail($email)
@@ -47,18 +47,18 @@
 		{
 			if (!empty($subject)) {
 				$this->subject = $subject;
-			} else {
-				$this->message['subject'] ='<p class="error"> Merci de d\'indiquer un sujet </p>';
+				return;
 			}
+			$this->message['subject'] ='<p class="error"> Merci de d\'indiquer un sujet </p>';
 		}
 
 		function setContent($content)
 		{
 			if (!empty($content)) {
 				$this->content = '<p> Nom : '.$this->name.'</p><p> Email : '.$this->email.'</p><p> Message : '.$content.'</p>';
-			} else {
-				$this->message['content'] ='<p class="error"> Veuillez ecrire un message </p>';
+				return;
 			}
+			$this->message['content'] ='<p class="error"> Veuillez ecrire un message </p>';
 		}
 
 		function send(){

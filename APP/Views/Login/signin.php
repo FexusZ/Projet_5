@@ -4,7 +4,10 @@
     }
 
     if (isset($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) {
-        $test = new APP\Log\signin($_POST);
+        $array['username']      =   htmlspecialchars($_POST['username']?:'');
+        $array['password']     =   htmlspecialchars($_POST['password']?:'');
+
+        $test = new APP\Log\signin($array);
         $message =  $test->signin();
     }
     if(!empty($_GET['p'])) {

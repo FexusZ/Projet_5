@@ -4,7 +4,9 @@
     }
 
     if (isset($_POST['email']) && !empty($_POST['email'])) {
-        $test = new APP\Log\Forgout_pass($_POST['email']);
+		$array['email']		=	htmlspecialchars($_POST['email']?:'');
+
+        $test = new APP\Log\Forgout_pass($array['email']);
         $message =  $test->send();
     }
 ?>

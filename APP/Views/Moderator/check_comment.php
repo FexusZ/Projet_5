@@ -2,12 +2,13 @@
 	if (!isset($_SESSION['login']) || $_SESSION['login']->acces != 10) {
         APP\AppFactory::header('Location: /home/index/');
     } else {
-		if (isset($_POST) && !empty($_POST['id_comment'])) {
+		if (isset($_POST) && !empty($_POST)) {
+			$id = intval($_POST['id_comment']?:0);
 			if (isset($_POST['valide_comment'])) {
-				$valide = new APP\Moderator\ValideComment(intval($_POST['id_comment']));
+				$valide = new APP\Moderator\ValideComment($id);
 				$message = $valide->valide();
 			} elseif (isset($_POST['delete_comment'])) {
-				$delete = new APP\Moderator\DeleteComment(intval($_POST['id_comment']));
+				$delete = new APP\Moderator\DeleteComment($id);
 				$message = $delete->delete();
 			}
 		}

@@ -19,13 +19,12 @@
 
 			if (!empty($this->message['id_user']) || !empty($this->message['id_post'])) {
 				return $this->message;
-			} else {
-				AppFactory::query('DELETE FROM post WHERE ID = :id',
+			}
+			AppFactory::query('DELETE FROM post WHERE ID = :id',
 				NULL, 'No',
 				[
 					':id'	=>	$this->ID
 				]);
 				AppFactory::header('Location: /home/index');
-			}
 		}
 	}

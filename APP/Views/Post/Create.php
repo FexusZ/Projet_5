@@ -3,8 +3,13 @@
 	if (!isset($_SESSION['login']) || $_SESSION['login']->acces != 10) {
         APP\AppFactory::header('Location: /home/index/');
     } else {
-		if (isset($_POST) && !empty($_POST['title']) && !empty($_POST['chapo'])  && !empty($_POST['content'])) {
-			$post = new APP\Post\PostCreate($_POST['title'],$_POST['chapo'],$_POST['content'],intval($_SESSION['login']->ID));
+		if (isset($_POST) && !empty($_POST)) {
+			$title 		= htmlspecialchars($_POST['title']?:'');
+			$chapo 		= htmlspecialchars($_POST['chapo']?:'');
+			$content 		= htmlspecialchars($_POST['content']?:'');
+			$id_session 		= intval($_SESSION['login']->ID?:'');
+
+			$post = new APP\Post\PostCreate($title ,$chapo , $content, $id_session);
 			$message = $post->insert();
 		}
 	?>

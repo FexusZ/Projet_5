@@ -5,7 +5,7 @@
 	class AppFactory
 	{
 
-		private static $db;
+		private static $dbh;
 		private static $response;
 		private static $page;
 		/**
@@ -14,10 +14,10 @@
 		*/
 		private static function getDb()
 		{
-			if (self::$db === NULL) {
-				self::$db = new Database(DB_NAME, DB_USER, DB_PASS, DB_HOST);
+			if (self::$dbh === NULL) {
+				self::$dbh = new Database(DB_NAME, DB_USER, DB_PASS, DB_HOST);
 			}
-			return self::$db;
+			return self::$dbh;
 		}
 
 		/**
@@ -79,27 +79,50 @@
 			return 	self::ExpandMenu($menu, false);
 		}
 
-		private static function ExpandMenu($menu, $children = true)
-		{	
-			$return = '';
+		private static function StartMenu($children)
+		{
 			if (!$children) {
-				$return = "
+				return "
 				<div class='navbar navbar-inverse navbar-fixed-top headroom'>
-				    <div class='container'>
-				      	<div class='navbar-header'>
-				        	<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'><span class='icon-bar'></span> <span class='icon-bar'></span> <span class='icon-bar'></span> </button>
-				        	<a class='navbar-brand' href='/home/index/''><img src='../../public/images/logo_test.png' alt='Progressus HTML5 template'></a>
-				      	</div>
-				      	<div class='navbar-collapse collapse'>		
+					<div class='container'>
+						<div class='navbar-header'>
+							<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'><span class='icon-bar'></span> <span class='icon-bar'></span> <span class='icon-bar'></span> </button>
+							<a class='navbar-brand' href='/home/index/''><img src='../../public/images/logo_test.png' alt='Progressus HTML5 template'></a>
+						</div>
+						<div class='navbar-collapse collapse'>		
 							<ul class='nav navbar-nav pull-right'>";
 			}
+		}
 
-			foreach ($menu as $key => $value) 
-			{
-				$active='';
-				if ($key == self::$page) {
-					$active = 'active';
+		private static function EndMenu($children)
+		{
+			$return = '';
+			if (!$children) {
+				$active = '';
+				if (empty($_SESSION)) {
+					if (self::$page=='Login')
+						$active = 'active';
+					$return.= 			"<li class='".$active."'><a class='btn' href='/login/signin/'>SIGN IN / SIGN UP</a></li>";
+				} else {
+					$return.= 			"<li><a class='btn' href='/login/logout/'>LOG OUT</a></li>";
 				}
+
+				$return.= "			</ul>
+							</div>
+				    	</div>
+					</div>";
+			}
+			return $return;
+		}
+
+		private static function ExpandMenu($menu, $children = true)
+		{	
+			$return = self::StartMenu($children);
+
+			foreach ($menu as $key => $value) {
+				$active='';
+				if ($key == self::$page)
+					$active = 'active';
 				if (isset($value['sub_menu']) && !empty($value['sub_menu'])) {
 					$return.= 			"<li class='dropdown ".$active."'>
 			            					<a href='".$value['lien']."' class='dropdown-toggle' data-toggle='dropdown'>".$key." <b class='caret'></b></a>
@@ -112,23 +135,7 @@
 				}
 			}
 
-			if (!$children) {
-				$active = '';
-				if (empty($_SESSION)) {
-					if (self::$page=='Login') {
-						$active = 'active';
-					}
-					$return.= 			"<li class='".$active."'><a class='btn' href='/login/signin/'>SIGN IN / SIGN UP</a></li>";
-				} else {
-					$return.= 			"<li><a class='btn' href='/login/logout/'>LOG OUT</a></li>";
-				}
-
-				$return.= "			</ul>
-							</div>
-				    	</div>
-					</div>";
-			}
-
+			$return .= self::EndMenu($children);
 			return $return;
 		}
 

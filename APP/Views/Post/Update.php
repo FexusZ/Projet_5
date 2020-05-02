@@ -3,12 +3,17 @@
 	if (!isset($_SESSION['login']) || $_SESSION['login']->acces != 10 || empty($post)) {
         \APP\AppFactory::header('Location: /home/index/');
     } else {
-		if (isset($_POST) && !empty($_POST['title']) && !empty($_POST['chapo'])  && !empty($_POST['content'])) {
+		if (isset($_POST) && !empty($_POST)) {
+			$title 		= htmlspecialchars($_POST['title']?:'');
+			$chapo 		= htmlspecialchars($_POST['chapo']?:'');
+			$content 	= htmlspecialchars($_POST['content']?:'');
+			$id 		= intval($post->ID?:0);
+			$id_session = intval($_SESSION['login']->ID?:0);
 			if (isset($_POST['update'])) {
-				$update = new APP\Post\PostUpdate($_POST['title'],$_POST['chapo'],$_POST['content'],intval($post->ID),intval($_SESSION['login']->ID));
+				$update = new APP\Post\PostUpdate($title, $chapo, $content, $id, $id_session);
 				$message = $update->update();
 			} elseif(isset($_POST['delete'])) {
-				$delete = new APP\Post\PostDelete(intval($post->ID),intval($_SESSION['login']->ID));
+				$delete = new APP\Post\PostDelete($id, $id_session);
 				$message = $delete->delete();
 			}
 		}

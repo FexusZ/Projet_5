@@ -11,7 +11,6 @@
 		{
 			foreach ($array as $key => $value) {
 				$method = 'set'.ucfirst($key);
-
 				if (method_exists($this, $method)) {
 					$this->$method($value);
 				}		
@@ -21,19 +20,19 @@
 		private function setFirst_name($First_name)
 		{
 			if (empty($First_name)) {
-				$this->message['firstname'] 	= '<p class="error"> Veuillez renseigner un prenom </p>';			
-			} else {
-				$this->First_name = htmlspecialchars($First_name);	
+				$this->message['firstname'] 	= '<p class="error"> Veuillez renseigner un prenom </p>';
+				return;					
 			}
+			$this->First_name = htmlspecialchars($First_name);
 		}
 
 		private function setLast_name($Last_name)
 		{
 			if (empty($Last_name)) {
 				$this->message['lastname'] 	= '<p class="error"> Veuillez renseigner un nom </p>';			
-			} else {
-				$this->Last_name = htmlspecialchars($Last_name);
+				return;					
 			}
+			$this->Last_name = htmlspecialchars($Last_name);
 		}
 
 		private function setUsername($Username)
@@ -43,9 +42,8 @@
 				$this->message['username'] 	= '<p class="error"> Veuillez renseigner un nom de compte </p>';			
 			}elseif ($verif_username->nb !== '0') {
 				$this->message['username'] 	= '<p class="error"> Nom de compte indisponible </p>';			
-			} else {
-				$this->Username = htmlspecialchars($Username);
 			}
+			$this->Username = htmlspecialchars($Username);
 		}
 
 		private function setEmail($Email)
@@ -58,18 +56,17 @@
 				$this->message['email'] 	= '<p class="error"> Email indisponible </p>';			
 			} elseif(preg_match('#^(([a-zA-Z0-9\.-_])+)@(([a-zA-Z-0-9\.-_])+)\.(([a-z])+)$#',trim($Email)) === 0) {
 				$this->message['email'] 	= '<p class="error"> Email non valide </p>';			
-			} else {
-				$this->Email = htmlspecialchars($Email);
 			}
+			$this->Email = htmlspecialchars($Email);
 		}
 
 		private function setPassword($Password)
 		{
-			if (empty($Password)) {
-				$this->message['Password'] 	= '<p class="error"> Veuillez renseigner un mot de passe </p>';			
-			} else {
-				$this->Password = htmlspecialchars($Password);
+			if (empty($Password) && strlen($Password) > 8) {
+				$this->message['Password'] 	= '<p class="error"> Veuillez renseigner un mot de passe valide </p>';			
+				return;					
 			}
+			$this->Password = htmlspecialchars($Password);
 		}
 
 		public function signup()

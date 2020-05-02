@@ -22,12 +22,6 @@
 			return AppFactory::query('SELECT * FROM post WHERE id = ?', __CLASS__, true, [$id]);
 		}
 
- 		/**
- 		* Permet d'hydrater les données a envoyer en bdd
- 		* @param array
- 		*/
- 		
-
  		function getUrl()
  		{
  			return '/post/post/'. $this->ID;

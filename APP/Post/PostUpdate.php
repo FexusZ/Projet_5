@@ -29,8 +29,8 @@
 		{
 			if (!empty($this->message)) {
 				return $this->message;
-			} else {
-				AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update, post_date = :post_date WHERE ID = :id',
+			}
+			AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update, post_date = :post_date WHERE ID = :id',
 				NULL, 'No',
 				[
 					':title'		=>	$this->title,
@@ -42,7 +42,5 @@
 					':id'			=>	$this->ID
 				]);
 				AppFactory::header('Location: /post/post/'.$this->ID);
-
-			}
 		}
 	}
