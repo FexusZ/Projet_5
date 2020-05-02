@@ -40,8 +40,7 @@
 					<label>Prenom<span class="text-danger">*</span></label>
 					<input name="first_name" type="text" class="form-control">
 					<?php 
-						if (isset($message['firstname'])) 
-						{
+						if (isset($message['firstname'])) {
 							echo $message['firstname'];
 						}
 					?>
@@ -50,8 +49,7 @@
 					<label>Nom<span class="text-danger">*</span></label>
 					<input name="last_name" type="text" class="form-control">
 					<?php 
-						if (isset($message['lastname'])) 
-						{
+						if (isset($message['lastname'])) {
 							echo $message['lastname'];
 						}
 					?>
@@ -60,8 +58,7 @@
 					<label>Nom de compte <span class="text-danger">*</span></label>
 					<input name="username" type="text" class="form-control">
 					<?php 
-						if (isset($message['username'])) 
-						{
+						if (isset($message['username'])) {
 							echo $message['username'];
 						}
 					?>
@@ -70,8 +67,7 @@
 					<label>Email <span class="text-danger">*</span></label>
 					<input name="email" type="text" class="form-control">
 					<?php 
-						if (isset($message['email'])) 
-						{
+						if (isset($message['email'])) {
 							echo $message['email'];
 						}
 					?>
@@ -82,8 +78,7 @@
 						<label>Mot de passe <span class="text-danger">*</span></label>
 						<input name="password" type="password" class="form-control">
 						<?php 
-						if (isset($message['Password'])) 
-						{
+						if (isset($message['Password'])) {
 							echo $message['Password'];
 						}
 					?>
@@ -92,16 +87,14 @@
 						<label>Confirmation <span class="text-danger">*</span></label>
 						<input name="confirm_password" type="password" class="form-control">
 						<?php 
-						if (isset($message['Confirm_password'])) 
-						{
+						if (isset($message['Confirm_password'])) {
 							echo $message['Confirm_password'];
 						}
 					?>
 					</div>
 				</div>
 				<?php 
-					if (isset($message['password2'])) 
-					{
+					if (isset($message['password2'])) {
 						echo $message['password2'];
 					}
 				?>

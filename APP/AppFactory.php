@@ -14,8 +14,7 @@
 		*/
 		private static function getDb()
 		{
-			if (self::$db === NULL) 
-			{
+			if (self::$db === NULL) {
 				self::$db = new Database(DB_NAME, DB_USER, DB_PASS, DB_HOST);
 			}
 			return self::$db;
@@ -30,10 +29,9 @@
 		*/
 		public static function query($statement, $class_name = NULL, $fetch = false, $array = array())
 		{
-			if (empty($array))
-			{
+			if (empty($array)) {
 				self::$response = self::getDb()->query($statement, $class_name, $fetch);
-			}else{
+			} else {
 				self::$response = self::getDb()->execute($statement, $class_name, $fetch, $array);
 			}
 			return self::$response;
@@ -99,38 +97,30 @@
 			foreach ($menu as $key => $value) 
 			{
 				$active='';
-				if ($key == self::$page) 
-				{
+				if ($key == self::$page) {
 					$active = 'active';
 				}
-				if (isset($value['sub_menu']) && !empty($value['sub_menu'])) 
-				{
+				if (isset($value['sub_menu']) && !empty($value['sub_menu'])) {
 					$return.= 			"<li class='dropdown ".$active."'>
 			            					<a href='".$value['lien']."' class='dropdown-toggle' data-toggle='dropdown'>".$key." <b class='caret'></b></a>
 			            					<ul class='dropdown-menu'>";
 					$return .=  				self::ExpandMenu($value['sub_menu']);
 					$return .=				"</ul>
 										</li>";
-				}
-				else
-				{
+				} else {
 					$return .= 			"<li class='".$active."'><a href='".$value['lien']."'>".$key."</a></li>";
 				}
 			}
 
 			if (!$children) {
 				$active = '';
-				if (empty($_SESSION)) 
-				{
+				if (empty($_SESSION)) {
 					if (self::$page=='Login') {
 						$active = 'active';
 					}
 					$return.= 			"<li class='".$active."'><a class='btn' href='/login/signin/'>SIGN IN / SIGN UP</a></li>";
-				}
-				else
-				{
+				} else {
 					$return.= 			"<li><a class='btn' href='/login/logout/'>LOG OUT</a></li>";
-
 				}
 
 				$return.= "			</ul>

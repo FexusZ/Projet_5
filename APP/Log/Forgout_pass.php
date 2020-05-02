@@ -16,20 +16,13 @@
 		{
 			$verif_email = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE email = ?',NULL, true, [$Email]);
 
-			if (empty($Email)) 
-			{
+			if (empty($Email)) {
 				$this->message['email'] 	= '<p class="error"> Veuillez renseigner un email </p>';			
-			}
-			elseif(!$verif_email)
-			{
+			} elseif(!$verif_email) {
 				$this->message['email'] 	= '<p class="error"> Cette email ne correspond a aucun compte </p>';			
-			}
-			elseif(preg_match('#((a-zA-Z0-9\.-_)@(a-zA-Z-0-9\.-_)\.([a-z]))#',trim($Email)))
-			{
+			} elseif(preg_match('#((a-zA-Z0-9\.-_)@(a-zA-Z-0-9\.-_)\.([a-z]))#',trim($Email))) {
 				$this->message['email'] 	= '<p class="error"> Email non valide </p>';			
-			}
-			else
-			{
+			} else {
 				$this->Email = $Email;
 			}
 		}

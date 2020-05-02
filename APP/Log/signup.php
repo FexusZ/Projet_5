@@ -9,12 +9,10 @@
 		
 		public function __construct($array)
 		{
-			foreach ($array as $key => $value) 
-			{
+			foreach ($array as $key => $value) {
 				$method = 'set'.ucfirst($key);
 
-				if (method_exists($this, $method)) 
-				{
+				if (method_exists($this, $method)) {
 					$this->$method($value);
 				}		
 			}
@@ -22,79 +20,54 @@
 
 		private function setFirst_name($First_name)
 		{
-			if (empty($First_name)) 
-			{
+			if (empty($First_name)) {
 				$this->message['firstname'] 	= '<p class="error"> Veuillez renseigner un prenom </p>';			
-			}
-			else
-			{
-				$this->First_name = htmlspecialchars($First_name);
-				
+			} else {
+				$this->First_name = htmlspecialchars($First_name);	
 			}
 		}
 
 		private function setLast_name($Last_name)
 		{
-			if (empty($Last_name)) 
-			{
+			if (empty($Last_name)) {
 				$this->message['lastname'] 	= '<p class="error"> Veuillez renseigner un nom </p>';			
-			}
-			else
-			{
+			} else {
 				$this->Last_name = htmlspecialchars($Last_name);
-				
 			}
 		}
 
 		private function setUsername($Username)
 		{
-
 			$verif_username = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE username = ?',NULL, true, [$Username]);
-			if (empty($Username)) 
-			{
+			if (empty($Username)) {
 				$this->message['username'] 	= '<p class="error"> Veuillez renseigner un nom de compte </p>';			
 			}elseif ($verif_username->nb !== '0') {
 				$this->message['username'] 	= '<p class="error"> Nom de compte indisponible </p>';			
-			}
-			else
-			{
+			} else {
 				$this->Username = htmlspecialchars($Username);
-				
 			}
 		}
 
 		private function setEmail($Email)
 		{
-
 			$verif_email = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE email = ?',NULL, true, [$Email]);
 
-			if (empty($Email)) 
-			{
+			if (empty($Email)){
 				$this->message['email'] 	= '<p class="error"> Veuillez renseigner un email </p>';			
-			}
-			elseif($verif_email->nb !== '0')
-			{
+			} elseif($verif_email->nb !== '0') {
 				$this->message['email'] 	= '<p class="error"> Email indisponible </p>';			
-			}
-			elseif(preg_match('#^(([a-zA-Z0-9\.-_])+)@(([a-zA-Z-0-9\.-_])+)\.(([a-z])+)$#',trim($Email)) === 0)
-			{
+			} elseif(preg_match('#^(([a-zA-Z0-9\.-_])+)@(([a-zA-Z-0-9\.-_])+)\.(([a-z])+)$#',trim($Email)) === 0) {
 				$this->message['email'] 	= '<p class="error"> Email non valide </p>';			
-			}
-			else
-			{
+			} else {
 				$this->Email = htmlspecialchars($Email);
-				
 			}
 		}
 
 		private function setPassword($Password)
 		{
-			if (empty($Password)) 
-			{
+			if (empty($Password)) {
 				$this->message['Password'] 	= '<p class="error"> Veuillez renseigner un mot de passe </p>';			
-			}
-			else
-			{
+			} else {
 				$this->Password = htmlspecialchars($Password);
 			}
 		}

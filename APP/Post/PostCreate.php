@@ -25,12 +25,9 @@
 		public function setId_user($id)
 		{
 			$test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id', NULL, true, array(':id' => $id));
-			if (is_int($id) && $test_id) 
-			{
+			if (is_int($id) && $test_id) {
 				$this->ID_user = $id;
-			}
-			else
-			{
+			} else {
 				$this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>';
 			}
 		}
@@ -38,12 +35,9 @@
 		public function insert()
 		{
 
-			if (!empty($this->message['title']) || !empty($this->message['chapo']) || !empty($this->message['content']) || !empty($this->message['id_user'])) 
-			{
+			if (!empty($this->message)) {
 				return $this->message;
-			}
-			else
-			{
+			} else {
 				AppFactory::query('INSERT INTO post(title, chapo, content, ID_user, update_ID_user, last_update, post_date)
 				VALUES(:title, :chapo, :content, :ID_user, :ID_user, :last_update, :post_date)',
 				NULL, 'No',

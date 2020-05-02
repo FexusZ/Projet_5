@@ -9,12 +9,10 @@
 		
 		public function __construct($array)
 		{
-			foreach ($array as $key => $value) 
-			{
+			foreach ($array as $key => $value) {
 				$method = 'set'.ucfirst($key);
 
-				if (method_exists($this, $method)) 
-				{
+				if (method_exists($this, $method)) {
 					$this->$method($value);
 				}	
 			}
@@ -22,8 +20,7 @@
 
 		private function setPassword($Password)
 		{
-			if (empty($Password)) 
-			{
+			if (empty($Password)) {
 				$this->message['password'] 	= '<p class="error"> Veuillez renseigner un mot de passe </p>';			
 			}
 		}
@@ -35,8 +32,7 @@
 
 		public function send()
 		{
-			if (!empty($this->message)) 
-			{
+			if (!empty($this->message)) {
 				return $this->message;
 			}
 

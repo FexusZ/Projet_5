@@ -27,12 +27,9 @@
 
 		public function update()
 		{
-			if (!empty($this->message['title']) || !empty($this->message['chapo']) || !empty($this->message['content']) || !empty($this->message['id_user']) || !empty($this->message['id_post'])) 
-			{
+			if (!empty($this->message)) {
 				return $this->message;
-			}
-			else
-			{
+			} else {
 				AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update, post_date = :post_date WHERE ID = :id',
 				NULL, 'No',
 				[

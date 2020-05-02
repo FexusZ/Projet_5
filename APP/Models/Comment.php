@@ -9,7 +9,12 @@
 
 		public static function getAll($id_post)
 		{
-			return AppFactory::query("SELECT * FROM comment WHERE ID_post = ? AND validate = 1", __CLASS__, false, [$id_post]);
+			return AppFactory::query("SELECT c.*, concat(cl.firstname, ' ', cl.lastname) as author
+										FROM comment as c
+										JOIN client as cl
+											ON c.Id_user = cl.ID
+								 		WHERE ID_post = ? 
+								 			AND validate = 1", __CLASS__, false, [$id_post]);
 		}
 
 		public static function getNotValidate(){
@@ -25,18 +30,5 @@
  			$method = 'get'.ucfirst($key);
  			$this->$key = $this->$method();
  			return $this->$key;
- 		}
-
- 		function getAuthor()
- 		{
- 			$author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID'	=>	$this->ID_user])->author;
-
-
- 			return '<p>'.$author.' le : '.date('d-m-Y', $this->post_date).'</p>';
- 		}
-
- 		function getContent()
- 		{
- 			return '<p>'. nl2br($this->comment) .'</p>';
  		}
 	}

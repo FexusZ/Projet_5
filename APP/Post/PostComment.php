@@ -20,12 +20,9 @@
 
 		public function SetComment($comment)
 		{
-			if (!empty($comment)) 
-			{
+			if (!empty($comment)) {
 				$this->comment = $comment;
-			}
-			else
-			{
+			} else {
 				$this->message['comment'] = '<p class="error">Merci d\'ajouter un commentaire avant d\'envoyer</p>';
 			}
 		}
@@ -33,12 +30,9 @@
 		public function send()
 		{
 
-			if (!empty($this->message['comment']) || !empty($this->message['id_user']) || !empty($this->message['id_post'])) 
-			{
+			if (!empty($this->message)) {
 				return $this->message;
-			}
-			else
-			{
+			} else {
 
 				AppFactory::query('INSERT INTO comment(ID_post, comment, ID_user, post_date)
 				VALUES(:ID_post, :comment, :ID_user, :post_date)',

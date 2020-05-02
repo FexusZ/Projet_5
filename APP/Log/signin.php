@@ -9,11 +9,9 @@
 		
 		public function __construct($array)
 		{
-			foreach ($array as $key => $value) 
-			{
+			foreach ($array as $key => $value) {
 				$method = 'set'.ucfirst($key);
-				if (method_exists($this, $method)) 
-				{
+				if (method_exists($this, $method)) {
 					$this->$method($value);
 				}	
 			}
@@ -32,7 +30,7 @@
 				$this->Password = substr($this->Password, 32, -3)?:$this->Password;
 				$this->Password = substr($this->Password, 80, -4)?:$this->Password;
 				$this->Password = substr($this->Password, 70, -6)?:$this->Password;
-			}else{
+			} else {
 				$this->Password ='';
 			}
 		}
@@ -50,12 +48,10 @@
 
 		private function hydrate($param)
 		{
-			if ($param == NULL) 
-			{
+			if ($param == NULL) {
 				return '<p class="error"> Mauvais identifiant </p>';
 			}
-			if ($param->token_use == 0) 
-			{
+			if ($param->token_use == 0) {
 				return '<p class="error">Compte non validé </p>';
 			}
 			$_SESSION['login'] = $param;

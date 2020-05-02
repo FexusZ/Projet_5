@@ -17,12 +17,9 @@
 		public function delete()
 		{
 
-			if (!empty($this->message['id_user']) || !empty($this->message['id_post'])) 
-			{
+			if (!empty($this->message['id_user']) || !empty($this->message['id_post'])) {
 				return $this->message;
-			}
-			else
-			{
+			} else {
 				AppFactory::query('DELETE FROM post WHERE ID = :id',
 				NULL, 'No',
 				[
@@ -30,6 +27,5 @@
 				]);
 				AppFactory::header('Location: /home/index');
 			}
-
 		}
 	}

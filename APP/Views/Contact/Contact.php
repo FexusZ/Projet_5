@@ -1,6 +1,5 @@
 <?php
-	if (isset($_POST) && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject'])  && !empty($_POST['content']))
-	{
+	if (isset($_POST) && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject'])  && !empty($_POST['content'])) {
 		$contact = new APP\Contact\Contact($_POST);
 		$message = $contact->send();
 	}
@@ -33,8 +32,7 @@
 						<div class="col-sm-6">
 							<input class="form-control" type="text" name="name" placeholder="Nom/Prenom">
 							<?php
-							if (isset($message['name']) && !empty($message['name']))
-							{
+							if (isset($message['name']) && !empty($message['name'])) {
 								echo $message['name'];
 							}
 							?>
@@ -42,8 +40,7 @@
 						<div class="col-sm-6">
 							<input class="form-control" type="text"  name="email" placeholder="Email">
 							<?php
-							if (isset($message['email']) && !empty($message['email']))
-							{
+							if (isset($message['email']) && !empty($message['email'])) {
 								echo $message['email'];
 							}
 							?>
@@ -54,8 +51,7 @@
 						<div class="col-sm-12">
 							<input class="form-control" type="text"  name="subject" placeholder="Sujet">
 							<?php
-							if (isset($message['subject']) && !empty($message['subject']))
-							{
+							if (isset($message['subject']) && !empty($message['subject'])) {
 								echo $message['subject'];
 							}
 							?>
@@ -67,8 +63,7 @@
 						<div class="col-sm-12">
 							<textarea placeholder="Ecrivez votre message ici..." name='content' class="form-control" rows="9"></textarea>
 							<?php
-							if (isset($message['content']) && !empty($message['content']))
-							{
+							if (isset($message['content']) && !empty($message['content'])) {
 								echo $message['content'];
 							}
 							?>
@@ -77,12 +72,10 @@
 					<br>
 					<div class="row">
 						<?php
-							if (isset($message['success']) && !empty($message['success']))
-							{
+							if (isset($message['success']) && !empty($message['success'])) {
 								echo $message['success'];
 							}
-							if (isset($message['error']) && !empty($message['error']))
-							{
+							if (isset($message['error']) && !empty($message['error'])) {
 								echo $message['error'];
 							}
 						?>
@@ -93,7 +86,6 @@
 						</div>
 					</div>
 				</form>
-
 		</article>
 		<!-- /Article -->
 	</div>

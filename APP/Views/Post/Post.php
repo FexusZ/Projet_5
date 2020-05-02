@@ -1,12 +1,8 @@
 <?php
-    if (empty($post)) 
-    {
+    if (empty($post)) {
         APP\AppFactory::header('Location: /home/index/');
-    }
-    else
-    {
-        if (!empty($_SESSION['login']) && isset($_POST['comment'])) 
-        {
+    } else {
+        if (!empty($_SESSION['login']) && isset($_POST['comment'])) {
             $new_comment = new APP\Post\PostComment($_POST['comment'], intval($_SESSION['login']->ID), intval($post->ID));
             $message = $new_comment->send();
         }
@@ -22,9 +18,9 @@
 <div class="container container3">
 	<div class="row">
         <div class='col-sm-12'>
-    		<?= $post->post_title ?>
-    		<?= $post->post_content ?>
-    		<?= $post->author ?>
+    		<?= $post->Title ?>
+    		<?= $post->Content ?>
+    		<?= $post->Author ?>
 
             <?php
                 if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
@@ -45,7 +41,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <?= $value->author ?>
+                                    <?= $value->Author ?>
                                     <?= $value->content ?>
                                 </div>
                             </div>

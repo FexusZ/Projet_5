@@ -1,11 +1,9 @@
 <?php
-    if (isset($_SESSION['login'])) 
-    {
+    if (isset($_SESSION['login'])) {
         APP\AppFactory::header('Location: /home/index/');
     }
 
-    if (isset($_POST['email']) && !empty($_POST['email'])) 
-    {
+    if (isset($_POST['email']) && !empty($_POST['email'])) {
         $test = new APP\Log\Forgout_pass($_POST['email']);
         $message =  $test->send();
     }
@@ -31,8 +29,7 @@
 					<label>Email <span class="text-danger">*</span></label>
 					<input name="email" type="text" class="form-control">
 					<?php 
-						if (isset($message['email'])) 
-						{
+						if (isset($message['email'])) {
 							echo $message['email'];
 						}
 					?>

@@ -51,14 +51,12 @@
 		*/
 		private function init()
 		{
-			if ($this->dbh == NULL) 
-			{
+			if ($this->dbh == NULL) {
 				$dbh = new PDO("mysql:dbname={$this->db_name};host={$this->db_host}", $this->db_user, $this->db_pass);
 
 				$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 				$this->dbh = $dbh;
 			}
-
 
 			return $this->dbh;
 		}
@@ -70,26 +68,18 @@
 		*/
 		public function query($statement, $class_name = NULL, $fetch = false)
 		{
-
 			$requete = $this->init()->query($statement);
 			if ($class_name == NULL) {
 				$requete->setFetchMode(PDO::FETCH_OBJ);
-			}
-			else
-			{
+			} else {
 				$requete->setFetchMode(PDO::FETCH_CLASS, $class_name);
 			}
 
-			if ($fetch === 'No') 
-			{
+			if ($fetch === 'No') {
 				$reponse ='';
-			}
-			elseif ($fetch) 
-			{
+			} elseif ($fetch) {
 				$reponse = $requete->fetch();
-			}
-			else
-			{
+			} else {
 				$reponse = $requete->fetchAll();
 			}
 
@@ -106,28 +96,19 @@
 			$requete = $this->init()->prepare($statement);
 			if ($class_name == NULL) {
 				$requete->setFetchMode(PDO::FETCH_OBJ);
-			}
-			else
-			{
+			} else {
 				$requete->setFetchMode(PDO::FETCH_CLASS, $class_name);
 			}
 		
 			$requete->execute($array);
 
-
-			if ($fetch === 'No') 
-			{
+			if ($fetch === 'No') {
 				$reponse ='';
-			}
-			elseif ($fetch) 
-			{
+			} elseif ($fetch) {
 				$reponse = $requete->fetch();
-			}
-			else
-			{
+			} else {
 				$reponse = $requete->fetchAll();
 			}
-
 			return $reponse;
 		}
 	}

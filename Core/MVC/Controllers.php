@@ -5,8 +5,8 @@
 	 */
 	class Controllers
 	{
-		public $vars = array();
-		public $template = 'default';
+		protected $vars = array();
+		protected $template = 'default';
 
 		public function __construct(){
 			if (isset($this->models)) {
@@ -16,7 +16,7 @@
 			}
 		}
 
-		function render($filename)
+		protected function render($filename)
 		{
 			extract($this->vars);
 			ob_start();
@@ -25,22 +25,19 @@
 
 			$content = ob_get_clean();
 
-			if (!$this->template) 
-			{
+			if (!$this->template) {
 				echo $content;
-			}
-			else
-			{
+			} else {
 				require ROOT.'APP/Views/template/'.$this->template.'.php';
 			}
 		}
 
-		function set($array)
+		protected function set($array)
 		{
 			$this->vars = array_merge($this->vars, $array);
 		}
 
-		function loadModel($model)
+		protected function loadModel($model)
 		{
 			$models = '\\APP\\Models\\'.$model;
 			$this->$model = new $models();

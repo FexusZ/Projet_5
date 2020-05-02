@@ -26,25 +26,20 @@
  		* Permet d'hydrater les données a envoyer en bdd
  		* @param array
  		*/
- 		function __GET($key)
- 		{
- 			$method = 'get'.ucfirst($key);
- 			$this->$key = $this->$method();
- 			return $this->$key;
- 		}
+ 		
 
  		function getUrl()
  		{
  			return '/post/post/'. $this->ID;
  		}
 
- 		function getPost_chapo()
+ 		function getChapo()
  		{
  			str_replace("\n", '</br>', $this->chapo);
  			return '<p>'. $this->chapo . '... <a href='. $this->getUrl() .'>Voir la suite</a>';
  		}
 
- 		function getPost_title()
+ 		function getTitle()
  		{
  			return '<h2>'. $this->title .'</h2>';
  		}
@@ -53,10 +48,11 @@
  		{
  			$author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID'	=>	$this->ID_user])->author;
  			$update_author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID'	=>	$this->update_ID_user])->author;
+
  			return '<p> Publication faite par : '.$author.' </br> Derniere modification faite le : '.date('d-m-Y', $this->last_update).', par : '.$update_author.'</p>';
  		}
 
- 		function getPost_content()
+ 		function getContent()
  		{
  			return '<p>'.nl2br($this->chapo).'</p><p>'. nl2br($this->content) .'</p>';
  		}

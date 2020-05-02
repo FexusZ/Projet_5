@@ -1,11 +1,9 @@
 <?php
-    if (isset($_SESSION['login'])) 
-    {
+    if (isset($_SESSION['login'])) {
         APP\AppFactory::header('Location: /home/index/');
     }
 
-    if (isset($_POST) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['token'])) 
-    {
+    if (isset($_POST) && !empty($_POST['password']) && !empty($_POST['confirm_password']) && !empty($_POST['token'])) {
         $test = new APP\Log\Pass_token($_POST);
         $message =  $test->send();
     }
@@ -36,9 +34,9 @@
 	<div class="panel panel-default">
 		<div class="panel-body">
 			<?php
-			if(!empty($message)){
+			if(!empty($message)) {
 					echo $message;
-			}else{
+			} else {
 			?>	
 
 			<h3 class="thin text-center">Mot de passe oublié</h3>
@@ -48,8 +46,7 @@
 					<label>Nouveau mot de passe <span class="text-danger">*</span></label>
 					<input name="password" type="password" class="form-control">
 					<?php 
-						if (isset($message['password'])) 
-						{
+						if (isset($message['password'])) {
 							echo $message['password'];
 						}
 					?>
@@ -58,15 +55,13 @@
 					<label>Confirmation <span class="text-danger">*</span></label>
 					<input name="confirm_password" type="password" class="form-control">
 					<?php 
-						if (isset($message['confirm_password'])) 
-						{
+						if (isset($message['confirm_password'])) {
 							echo $message['confirm_password'];
 						}
 					?>
 				</div>
 				<?php 
-					if (isset($message['password2'])) 
-					{
+					if (isset($message['password2'])) {
 						echo $message['password2'];
 					}
 				?>

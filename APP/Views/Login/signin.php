@@ -1,16 +1,13 @@
 <?php
-    if (isset($_SESSION['login'])) 
-    {
+    if (isset($_SESSION['login'])) {
         APP\AppFactory::header('Location: /home/index/');
     }
 
-    if (isset($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
-    {
+    if (isset($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) {
         $test = new APP\Log\signin($_POST);
         $message =  $test->signin();
     }
-    if(!empty($_GET['p']))
-    {
+    if(!empty($_GET['p'])) {
         $param = explode('/', $_GET['p']);
     }
 ?>
@@ -56,25 +53,19 @@
                                 <button class="btn btn-action" type="submit">Connexion</button>
                             </div>
                             <?php
-                                if (!empty($message)) 
-                                {
+                                if (!empty($message)) {
                                     echo '</br>'.$message;
                                 }
-
-                                if (isset($token) && !empty($token)) 
-                                {
+                                if (isset($token) && !empty($token)) {
                                     echo "</br>".$token;
                                 }
-                                if ($param[2] == 'validate') 
-                                {
+                                if ($param[2] == 'validate') {
                                     echo "<p class='success'>Un mail vous a été envoyé pour valider votre compte.</p>";
                                 }
-                                if ($param[2] == 'validate_pass') 
-                                {
+                                if ($param[2] == 'validate_pass') {
                                     echo "<p class='success'>Un mail vous a été envoyé pour modifier votre mot de passe.</p>";
                                 }
-                                if ($param[2] == 'change_pass') 
-                                {
+                                if ($param[2] == 'change_pass') {
                                     echo "<p class='success'>Mot de passe modifié.</p>";
                                 }
                             ?>
