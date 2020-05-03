@@ -1,45 +1,54 @@
 <?php
-	namespace Core\MVC;
-	/**
-	 * 
-	 */
-	class Controllers
-	{
-		protected $vars = array();
-		protected $template = 'default';
+    namespace Core\MVC;
 
-		public function __construct(){
-			if (isset($this->models)) {
-				foreach ($this->models as $model) {
-					$this->loadModel($model);
-				}
-			}
-		}
+    use \APP\Config\Request;
 
-		protected function render($filename)
-		{
-			extract($this->vars);
-			ob_start();
+    /**
+     * 
+     */
+    class Controllers
+    {
+        protected $vars = array();
+        protected $template = 'default';
 
-			require ROOT.str_replace('\\', '/', str_replace('Controllers', 'Views',get_class($this))).'/'.$filename.'.php';
+        public function __construct()
+        {
+            if (isset($this->models)) {
+                foreach ($this->models as $model) {
+                    $this->loadModel($model);
+                }
+            }
 
-			$content = ob_get_clean();
+            $Request = new Request();
+            $param['get'] = $Request->getGet();
+            $param['post'] = $Request->getPost();
+            $param['session'] = $Request->getSession();
+            $this->set($param);
+        }
 
-			if (!$this->template) {
-				echo $content;
-			} else {
-				require ROOT.'APP/Views/template/'.$this->template.'.php';
-			}
-		}
+        protected function render($filename)
+        {
+            extract($this->vars);
+            ob_start();
+            require str_replace('\\', '/', str_replace('Controllers', 'Views',get_class($this))).'/'.$filename.'.php';
 
-		protected function set($array)
-		{
-			$this->vars = array_merge($this->vars, $array);
-		}
+            $content = ob_get_clean();
 
-		protected function loadModel($model)
-		{
-			$models = '\\APP\\Models\\'.$model;
-			$this->$model = new $models();
-		}
-	}
+            if (!$this->template) {
+                echo $content;
+            } else {
+                require 'APP/Views/template/'.$this->template.'.php';
+            }
+        }
+
+        protected function set($array)
+        {
+            $this->vars = array_merge($this->vars, $array);
+        }
+
+        protected function loadModel($model)
+        {
+            $models = '\\APP\\Models\\'.$model;
+            $this->$model = new $models();
+        }
+    }

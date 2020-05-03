@@ -1,31 +1,31 @@
 <?php
-	namespace APP\Controllers;
+    namespace APP\Controllers;
 
-	/**
-	 * 
-	 */
-	class Home extends \Core\MVC\Controllers
-	{
-		protected $models = array('Post');
-		function index()
-		{
-			$param['last_post'] = $this->Post->getLast();
-			$this->set($param);
-			$this->render('index');
-		}
+    /**
+     * 
+     */
+    class Home extends \Core\MVC\Controllers
+    {
+        protected $models = array('Post');
+        public function index()
+        {
+            $param['last_post'] = $this->Post->getLast();
+            $this->set($param);
+            $this->render('index');
+        }
 
-		function up_cv()
-		{
-			$this->render('up_cv');
-		}
+        public function curriculum()
+        {
+            $this->render('curriculum');
+        }
 
-		function condition_utilisation()
-		{
-			$this->render('condition_utilisation');
-		}
+        public function conditionUtilisation()
+        {
+            $this->render('conditionUtilisation');
+        }
 
-		function error()
-		{
-			$this->render('error');
-		}
-	}
+        public function error()
+        {
+            $this->render('error');
+        }
+    }

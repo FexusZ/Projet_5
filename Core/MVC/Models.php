@@ -1,24 +1,25 @@
 <?php
-	namespace Core\MVC;
+    namespace Core\MVC;
 
-	/**
-	 * 
-	 */
-	class Models
-	{
-		function __GET($key)
- 		{
- 			$method = 'get'.ucfirst($key);
- 			$this->$key = $this->$method();
- 			return $this->$key;
- 		}
- 		function getAuthor()
- 		{
- 			return '<p>'.$this->author.' le : '.date('d-m-Y', $this->post_date).'</p>';
- 		}
+    /**
+     * 
+     */
+    class Models
+    {
+        public function __GET($key)
+        {
+            $method = 'get'.ucfirst($key);
+            $this->$key = $this->$method();
+            return $this->$key;
+        }
+        
+        public function getAuthor()
+        {
+            return '<p>'.$this->author.' le : '.date('d-m-Y', $this->post_date).'</p>';
+        }
 
- 		function getContent()
- 		{
- 			return '<p>'. nl2br($this->comment) .'</p>';
- 		}
-	}
+        public function getContent()
+        {
+            return '<p>'. nl2br($this->comment) .'</p>';
+        }
+    }

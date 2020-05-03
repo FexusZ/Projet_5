@@ -1,17 +1,17 @@
 <?php
-	namespace APP\Controllers;
+    namespace APP\Controllers;
 
-	/**
-	 * 
-	 */
-	class Moderator extends \Core\MVC\Controllers
-	{
-		protected $models = array('Moderator');
+    /**
+     * 
+     */
+    class Moderator extends \Core\MVC\Controllers
+    {
+        protected $models = array('Moderator');
 
-		function check_comment()
-		{
-			$param['post'] = $this->Moderator->getNotValidatePost();
-			$this->set($param);			
-			$this->render('check_comment');
-		}
-	}
+        public function checkComment()
+        {
+            $param['article'] = $this->Moderator->getNotValidatePost();
+            $this->set($param);         
+            $this->render('checkComment');
+        }
+    }
