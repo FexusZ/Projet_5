@@ -46,5 +46,8 @@ Réalisation d'un blog en PHP orienté objet.
     * La classe AppFactory va permettre de faire appel a la base de données automatiquement grace a une methode (en faisant appel a la classe Database dans Core\Database), ainsi que s'occuper de generer le menu header.
     * Les autres dossiers dans le dossier APP, sons les classes qui vont permettent de traiter les différentes données envoyé par l'utilisateur.
 
+### Lien Codacy
+* https://app.codacy.com/manual/FexusZ/Projet_5/dashboard?bid=17711610
+
 ### V.1.0.0
 * Initial release
