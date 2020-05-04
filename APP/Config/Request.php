@@ -1,33 +1,57 @@
 <?php
-	namespace APP\Config;
-	/**
-	 * 
-	 */
-	class Request
-	{
-		private $get;
-   		private $post;
-    	private $session;
 
-		public function __construct()
-		{
-			$this->get = new Parameter($_GET);
-			$this->post = new Parameter($_POST);
-			$this->session = new Parameter($_SESSION);
-		}
+namespace APP\Config;
 
-		public function getGet()
-		{
-			return $this->get;
-		}
+/**
+ * Class Request
+ * @package APP\Config
+ */
+class Request
+{
+    /**
+     * @var Parameter
+     */
+    private $get;
+    /**
+     * @var Parameter
+     */
+    private $post;
+    /**
+     * @var Parameter
+     */
+    private $session;
 
-		public function getPost()
-		{
-			return $this->post;
-		}
+    /**
+     * Request constructor.
+     */
+    public function __construct()
+    {
+        $this->get = new Parameter($_GET);
+        $this->post = new Parameter($_POST);
+        $this->session = new Session($_SESSION);
+    }
 
-		public function getSession()
-		{
-			return $this->session;
-		}
-	}
+    /**
+     * @return Parameter
+     */
+    public function getGet()
+    {
+        return $this->get;
+    }
+
+    /**
+     * @return Parameter
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @return Parameter
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+}

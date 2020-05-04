@@ -1,29 +1,27 @@
 <?php
-    if (!empty($session->get('login'))) {
-        APP\AppFactory::header('Location: /home/error/');
-    }
+if (!empty($session->get('login'))) {
+    APP\AppFactory::header('Location: /home/error/');
+}
 
-    if (!empty($post->getParameter())) {
-        $array['username'] = htmlspecialchars($post->get('username') ?: '');
-        $array['password'] = htmlspecialchars($post->get('password') ?: '');
+if (!empty($post->getParameter())) {
+    $array['username'] = htmlspecialchars($post->get('username') ?: '');
+    $array['password'] = htmlspecialchars($post->get('password') ?: '');
 
-        $test = new APP\Log\signin($array);
-        $message =  $test->signin();
-    }
-    if(!empty($get->get('p'))) {
-        $param = explode('/', $get->get('p'));
-    }
+    $test = new APP\Log\signin($array);
+    $message = $test->signin();
+}
+if (!empty($get->get('p'))) {
+    $param = explode('/', $get->get('p'));
+}
 ?>
 <style type="text/css">
-    .error
-    {
-        color:red;
+    .error {
+        color: red;
         text-align: center;
     }
 
-    .success
-    {
-        color:green;
+    .success {
+        color: green;
         text-align: center;
     }
 </style>
@@ -35,7 +33,7 @@
                 <div class="panel-body">
                     <h3 class="thin text-center">Connexion au compte</h3>
                     <p class="text-center text-muted">
-                        <a href="/login/signup/">Créer un compte</a> 
+                        <a href="/login/signup/">Créer un compte</a>
                     </p>
                     <hr>
                     <form method="post" action='/login/signin/'>
@@ -56,15 +54,15 @@
                                 <button class="btn btn-action" type="submit">Connexion</button>
                             </div>
                             <?php
-                                if (!empty($message)) echo '</br>'.$message."\n";
+                            if (!empty($message)) echo '</br>' . $message . "\n";
 
-                                if (isset($token) && !empty($token)) echo "</br>".$token."\n";
+                            if (isset($token) && !empty($token)) echo "</br>" . $token . "\n";
 
-                                if ($param[2] == 'validate') echo "<p class='success'>Un mail vous a été envoyé pour valider votre compte.</p>\n";
-                                
-                                if ($param[2] == 'validate_pass') echo "<p class='success'>Un mail vous a été envoyé pour modifier votre mot de passe.</p>\n";
-                                
-                                if ($param[2] == 'change_pass') echo "<p class='success'>Mot de passe modifié.</p>\n";
+                            if ($param[2] == 'validate') echo "<p class='success'>Un mail vous a été envoyé pour valider votre compte.</p>\n";
+
+                            if ($param[2] == 'validate_pass') echo "<p class='success'>Un mail vous a été envoyé pour modifier votre mot de passe.</p>\n";
+
+                            if ($param[2] == 'change_pass') echo "<p class='success'>Mot de passe modifié.</p>\n";
                             ?>
                         </div>
                     </form>

@@ -1,12 +1,19 @@
 <?php
-    namespace APP\Controllers;
+
+namespace APP\Controllers;
+
+/**
+ * Class Contact
+ * @package APP\Controllers
+ */
+class Contact extends \Core\MVC\Controllers
+{
+
     /**
-     * 
+     *
      */
-    class Contact extends \Core\MVC\Controllers
+    public function contact()
     {
-        public function contact()
-        {
-            $this->render('contact');
-        }
+        $this->render('contact');
     }
+}

@@ -1,47 +1,46 @@
 <?php
-    if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
+if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
 
-        APP\AppFactory::header('Location: /home/error/');
-    } else {
+    APP\AppFactory::header('Location: /home/error/');
+} else {
 
-        if (!empty($post->getParameter())) {
+    if (!empty($post->getParameter())) {
 
-            $title = htmlspecialchars($post->get('title') ?: '');
-            $chapo = htmlspecialchars($post->get('chapo') ?: '');
-            $content = htmlspecialchars($post->get('content') ?: '');
-            $id_session = (int) $session->get('login')->ID ?: 0;
+        $title = htmlspecialchars($post->get('title') ?: '');
+        $chapo = htmlspecialchars($post->get('chapo') ?: '');
+        $content = htmlspecialchars($post->get('content') ?: '');
+        $id_session = (int)$session->get('login')->ID ?: 0;
 
-            $post = new APP\Post\PostCreate($title ,$chapo , $content, $id_session);
-            $message = $post->insert();
-        }
+        $post = new APP\Post\PostCreate($title, $chapo, $content, $id_session);
+        $message = $post->insert();
+    }
     ?>
 
     <style type="text/css">
-        .title
-        {
+        .title {
             margin-top: 20px;
             width: 70%;
             /*width: 270px;*/
             text-align: center;
             font-size: 20px;
         }
-        .chapo
-        {
+
+        .chapo {
             font-size: 20px;
         }
-        .content
-        {
+
+        .content {
             margin-top: 20px;
             font-size: 20px;
             min-height: 250px !important;
         }
-        .post
-        {
+
+        .post {
             text-align: center;
         }
-        #input_post
-        {
-            margin-top:20px;
+
+        #input_post {
+            margin-top: 20px;
         }
     </style>
 
@@ -50,22 +49,23 @@
             <form method="post">
                 <h2>Création d'un Post</h2>
                 <input type="text" name="title" class="form-control title" placeholder="Titre">
-                <?php if (!empty($message['title'])) echo $message['title']."\n"; ?>
+                <?php if (!empty($message['title'])) echo $message['title'] . "\n"; ?>
 
-                <h3 Title="Le chapô est un résumé du contenu de l'article, si il n'est pas rempli il reprendra les 150 premier caractere du contenu."> Chapô : </h3>
+                <h3 Title="Le chapô est un résumé du contenu de l'article, si il n'est pas rempli il reprendra les 150 premier caractere du contenu.">
+                    Chapô : </h3>
                 <textarea name='chapo' class="form-control chapo" aria-label="With textarea"></textarea>
-                <?php if (!empty($message['chapo'])) echo $message['chapo']."\n"; ?>
+                <?php if (!empty($message['chapo'])) echo $message['chapo'] . "\n"; ?>
 
 
                 <textarea name='content' class="form-control content" aria-label="With textarea"></textarea>
-                <?php if (!empty($message['content'])) echo $message['content']."\n"; ?>
+                <?php if (!empty($message['content'])) echo $message['content'] . "\n"; ?>
 
                 <p id='input_post'>
                     <input type="submit" value="Créer" class='btn'>
                 </p>
-                <?php if (!empty($message['id_user'])) echo $message['id_user']."\n"; ?>
+                <?php if (!empty($message['id_user'])) echo $message['id_user'] . "\n"; ?>
             </form>
         </div>
     </div>
     <?php
-    }
+}

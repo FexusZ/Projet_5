@@ -1,12 +1,19 @@
 <?php
+
 namespace APP\Models;
+
 use \APP\AppFactory;
 
+
 /**
- * 
+ * Class Moderator
+ * @package APP\Models
  */
 class Moderator extends \Core\MVC\Models
 {
+    /**
+     * @return mixed
+     */
     public static function getNotValidatePost()
     {
         return AppFactory::query("SELECT p.ID as id_post, p.title
@@ -17,6 +24,10 @@ class Moderator extends \Core\MVC\Models
                                     ORDER BY p.ID, c.ID", __CLASS__);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public static function getNotValidateComment($id)
     {
         return AppFactory::query("SELECT c.ID as id_comment, c.comment, c.comment, c.Id_user, concat(cl.firstname, ' ', cl.lastname) as author, c.post_date
@@ -30,8 +41,11 @@ class Moderator extends \Core\MVC\Models
                                     ORDER BY p.ID, c.ID", __CLASS__, false, [':id' => $id]);
     }
 
+    /**
+     * @return string
+     */
     public function getTitle()
     {
-        return '<h2>'. $this->title .'</h2>';
+        return '<h2>' . $this->title . '</h2>';
     }
 }

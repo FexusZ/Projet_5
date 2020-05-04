@@ -1,14 +1,13 @@
 <style type="text/css">
-    #social
-    {
+    #social {
         margin-bottom: 0px;
     }
-    .containercv
-    {
+
+    .containercv {
         padding-top: 100px;
     }
-    body
-    {
+
+    body {
         background-color: black;
     }
 </style>
