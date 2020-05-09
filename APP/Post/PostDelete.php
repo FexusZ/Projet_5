@@ -32,7 +32,7 @@ class PostDelete extends Post
             return $this->message;
         }
         AppFactory::query('DELETE FROM post WHERE ID = :id',
-            NULL, 'No',
+            null, 'No',
             [
                 ':id' => $this->ID
             ]);

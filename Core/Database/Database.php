@@ -51,7 +51,7 @@ class Database
      */
     private function init()
     {
-        if ($this->dbh == NULL) {
+        if ($this->dbh == null) {
             $dbh = new PDO("mysql:dbname={$this->db_name};host={$this->db_host}", $this->db_user, $this->db_pass);
 
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -66,10 +66,10 @@ class Database
      * @param $fetch bool permet de bloquer a un resultat
      * @return array
      */
-    public function query($statement, $class_name = NULL, $fetch = false)
+    public function query($statement, $class_name = null, $fetch = false)
     {
         $requete = $this->init()->query($statement);
-        if ($class_name == NULL) {
+        if ($class_name == null) {
             $requete->setFetchMode(PDO::FETCH_OBJ);
         } else {
             $requete->setFetchMode(PDO::FETCH_CLASS, $class_name);
@@ -92,10 +92,10 @@ class Database
      * @param $fetch bool permet de bloquer a un resultat
      * @return array
      */
-    public function execute($statement, $class_name = NULL, $fetch = false, $array = array())
+    public function execute($statement, $class_name = null, $fetch = false, $array = array())
     {
         $requete = $this->init()->prepare($statement);
-        if ($class_name == NULL) {
+        if ($class_name == null) {
             $requete->setFetchMode(PDO::FETCH_OBJ);
         } else {
             $requete->setFetchMode(PDO::FETCH_CLASS, $class_name);

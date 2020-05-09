@@ -33,7 +33,7 @@ class Comment
      */
     protected function setId_comment($id)
     {
-        $test_id = AppFactory::query('SELECT * FROM comment WHERE ID = :id', NULL, true,
+        $test_id = AppFactory::query('SELECT * FROM comment WHERE ID = :id', null, true,
             [
                 ':id' => $id,
             ]);

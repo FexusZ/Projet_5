@@ -17,6 +17,6 @@ class ValideComment extends Comment
         if (!empty($this->message)) {
             return $this->message;
         }
-        \APP\AppFactory::query('UPDATE comment SET validate = 1 WHERE ID = :id', NULL, 'No', [':id' => $this->ID_comment]);
+        \APP\AppFactory::query('UPDATE comment SET validate = 1 WHERE ID = :id', null, 'No', [':id' => $this->ID_comment]);
     }
 }

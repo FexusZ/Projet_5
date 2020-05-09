@@ -48,12 +48,12 @@ class Post
      */
     protected function setTitle($title)
     {
-        if ($title !== NULL && $title !== '' && strlen($title) <= 32) {
+        if ($title !== null && $title !== '' && strlen($title) <= 32) {
             $this->title = $title;
-        } elseif ($title === NULL && $title === '') {
-            $this->message['title'] = '<p class="error">Veuillez ajouter un titre.</p>';
+        } elseif ($title === null && $title === '') {
+            $this->message['title'] = '<p class="error">Veuillez ajouter un titre.</p>'."\n";
         } else {
-            $this->message['title'] = '<p class="error">Titre trop long, 32 Caractere maximum.</p>';
+            $this->message['title'] = '<p class="error">Titre trop long, 32 Caractere maximum.</p>'."\n";
         }
     }
 
@@ -66,10 +66,10 @@ class Post
             $this->chapo = $chapo;
         } elseif ($this->content) {
             $this->chapo = substr($this->content, 0, 100);
-        } elseif (!$chapo || !$this->content) {
-            $this->message['chapo'] = '<p class="error">Veuillez remplir le chapo et/ou le contenu.</p>';
+        } elseif (!$chapo && !$this->content) {
+            $this->message['chapo'] = '<p class="error">Veuillez remplir le chapo et/ou le contenu.</p>'."\n";
         } else {
-            $this->message['chapo'] = '<p class="error">Chapo trop long, 100 Caractere maximum.</p>';
+            $this->message['chapo'] = '<p class="error">Chapo trop long, 100 Caractere maximum.</p>'."\n";
         }
     }
 
@@ -78,11 +78,11 @@ class Post
      */
     protected function setContent($content)
     {
-        if ($content !== NULL && $content !== '') {
+        if ($content !== null && $content !== '') {
             $this->content = $content;
             return;
         }
-        $this->message['content'] = '<p class="error">Veuillez ajouter du contenu.</p>';
+        $this->message['content'] = '<p class="error">Veuillez ajouter du contenu.</p>'."\n";
     }
 
     /**
@@ -90,7 +90,7 @@ class Post
      */
     protected function setId($id)
     {
-        $test_id = AppFactory::query('SELECT * FROM post WHERE ID = :id', NULL, true,
+        $test_id = AppFactory::query('SELECT * FROM post WHERE ID = :id', null, true,
             [
                 ':id' => $id,
             ]);
@@ -98,7 +98,7 @@ class Post
             $this->ID = $id;
             return;
         }
-        $this->message['id_post'] = '<p class="error">ID de post incorrect.</p>';
+        $this->message['id_post'] = '<p class="error">ID de post incorrect.</p>'."\n";
     }
 
     /**
@@ -107,12 +107,12 @@ class Post
     protected function setId_user($id)
     {
         $test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id',
-            NULL, true, [':id' => $id]);
+            null, true, [':id' => $id]);
         if (is_int($id) && !empty($test_id)) {
             $this->ID_user = $id;
             return;
         }
-        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>';
+        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>'."\n";
     }
 
     /**

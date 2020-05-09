@@ -31,7 +31,7 @@ class AppFactory
      */
     private static function getDb()
     {
-        if (self::$dbh === NULL) {
+        if (self::$dbh === null) {
             self::$dbh = new Database(DB_NAME, DB_USER, DB_PASS, DB_HOST);
         }
         return self::$dbh;
@@ -44,7 +44,7 @@ class AppFactory
      * @param array $array
      * @return mixed
      */
-    public static function query($statement, $class_name = NULL, $fetch = false, $array = array())
+    public static function query($statement, $class_name = null, $fetch = false, $array = array())
     {
         if (empty($array)) {
             self::$response = self::getDb()->query($statement, $class_name, $fetch);

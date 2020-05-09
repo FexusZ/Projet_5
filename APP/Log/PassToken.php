@@ -52,7 +52,7 @@ class PassToken extends Log
         }
 
         \APP\AppFactory::query('UPDATE client SET password = :password, pass_token = 1 WHERE token = :token AND pass_token = 0',
-            NULL, 'No',
+            null, 'No',
             [
                 ':token' => $this->token,
                 ':password' => $this->password

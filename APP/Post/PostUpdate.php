@@ -43,7 +43,7 @@ class PostUpdate extends Post
             return $this->message;
         }
         AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update WHERE ID = :id',
-            NULL, 'No',
+            null, 'No',
             [
                 ':title' => $this->title,
                 ':chapo' => $this->chapo,

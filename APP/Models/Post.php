@@ -32,7 +32,7 @@ class Post extends \Core\MVC\Models
      */
     public static function getLast()
     {
-        return AppFactory::query("SELECT * FROM post LIMIT 5", __CLASS__);
+        return AppFactory::query("SELECT * FROM post LIMIT 4", __CLASS__);
     }
 
     /**
@@ -74,8 +74,8 @@ class Post extends \Core\MVC\Models
      */
     public function getAuthor()
     {
-        $author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID' => $this->ID_user])->author;
-        $update_author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', NULL, true, [':ID' => $this->update_ID_user])->author;
+        $author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', null, true, [':ID' => $this->ID_user])->author;
+        $update_author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', null, true, [':ID' => $this->update_ID_user])->author;
 
         return '<p> Publication faite le : ' . date('d-m-Y', $this->post_date) . ', par : ' . $author . '  </br> Derniere modification faite le : ' . date('d-m-Y', $this->last_update) . ', par : ' . $update_author . '</p>';
     }

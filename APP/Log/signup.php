@@ -56,7 +56,7 @@ class Signup extends Log
      */
     private function setUsername($username)
     {
-        $verif_username = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE username = ?', NULL, true, [$username]);
+        $verif_username = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE username = ?', null, true, [$username]);
         if (empty($username)) {
             $this->message['username'] = '<p class="error"> Veuillez renseigner un nom de compte </p>';
         } elseif ($verif_username->nb !== '0') {
@@ -70,7 +70,7 @@ class Signup extends Log
      */
     private function setEmail($email)
     {
-        $verif_email = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE email = ?', NULL, true, [$email]);
+        $verif_email = \APP\AppFactory::query('SELECT count(*) as nb FROM client WHERE email = ?', null, true, [$email]);
 
         if (empty($email)) {
             $this->message['email'] = '<p class="error"> Veuillez renseigner un email </p>';
@@ -106,7 +106,7 @@ class Signup extends Log
         $token = bin2hex(random_bytes(64));
         \APP\AppFactory::query('INSERT INTO client(firstname, lastname, username, email, password, acces, registration, token)
                                 VALUES(:firstname, :lastname, :username, :email, :password, :access, :registration, :token)',
-            NULL, 'No',
+            null, 'No',
             [
                 ':firstname' => $this->first_name,
                 ':lastname' => $this->last_name,

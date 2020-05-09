@@ -36,7 +36,7 @@ class PostComment extends Post
             $this->comment = $comment;
             return;
         }
-        $this->message['comment'] = '<p class="error">Merci d\'ajouter un commentaire avant d\'envoyer</p>';
+        $this->message['comment'] = '<p class="error">Merci d\'ajouter un commentaire avant d\'envoyer</p>'."\n";
     }
 
     /**
@@ -50,14 +50,14 @@ class PostComment extends Post
         }
         AppFactory::query('INSERT INTO comment(ID_post, comment, ID_user, post_date)
                 VALUES(:ID_post, :comment, :ID_user, :post_date)',
-            NULL, 'No',
+            null, 'No',
             [
                 ':ID_post' => $this->ID,
                 ':comment' => $this->comment,
                 ':ID_user' => $this->ID_user,
                 ':post_date' => $this->post_date
             ]);
-        $this->message['success'] = '<p class="success"> Commentaire envoyé en validations </p>';
+        $this->message['success'] = '<p class="success"> Commentaire envoyé en validations </p>'."\n";
         return $this->message;
     }
 }

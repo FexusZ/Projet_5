@@ -38,12 +38,12 @@ class PostCreate extends Post
      */
     protected function setId_user($id)
     {
-        $test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id', NULL, true, array(':id' => $id));
+        $test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id', null, true, array(':id' => $id));
         if (is_int($id) && $test_id) {
             $this->ID_user = $id;
             return;
         }
-        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>';
+        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>'."\n";
     }
 
     /**
@@ -57,7 +57,7 @@ class PostCreate extends Post
         }
         AppFactory::query('INSERT INTO post(title, chapo, content, ID_user, update_ID_user, last_update, post_date)
                 VALUES(:title, :chapo, :content, :ID_user, :ID_user, :last_update, :post_date)',
-            NULL, 'No',
+            null, 'No',
             [
                 ':title' => $this->title,
                 ':chapo' => $this->chapo,
@@ -66,7 +66,7 @@ class PostCreate extends Post
                 ':last_update' => $this->last_update,
                 ':post_date' => $this->post_date
             ]);
-        $last_id = AppFactory::query('SELECT MAX(ID) as ID FROM post', NULL, true)->ID;
+        $last_id = AppFactory::query('SELECT MAX(ID) as ID FROM post', null, true)->ID;
         AppFactory::header('Location: /post/post/' . $last_id);
     }
 }

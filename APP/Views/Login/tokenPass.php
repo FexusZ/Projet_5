@@ -8,7 +8,7 @@ if (!empty($post->getParameter())) {
     $array['confirm_password'] = htmlspecialchars($post->get('confirm_password') ?: '');
     $array['token'] = htmlspecialchars($token ?: '');
 
-    $test = new APP\Log\Pass_token($array);
+    $test = new APP\Log\passToken($array);
     $message = $test->send();
 }
 ?>

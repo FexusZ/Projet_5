@@ -55,7 +55,7 @@ class Signin
     public function signin()
     {
         $param = \APP\AppFactory::query('SELECT * FROM client WHERE (username = :username OR email = :username) AND password = :password',
-            NULL, true,
+            null, true,
             [
                 ':username' => $this->username,
                 ':password' => $this->password
@@ -71,7 +71,7 @@ class Signin
      */
     private function hydrate($param)
     {
-        if ($param == NULL) {
+        if ($param == null) {
             return '<p class="error"> Mauvais identifiant </p>';
         }
         if ($param->token_use == 0) {

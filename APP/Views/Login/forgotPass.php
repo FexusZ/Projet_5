@@ -6,7 +6,7 @@ if (!empty($session->get('login'))) {
 if (!empty($post->getParameter())) {
     $email = htmlspecialchars($post->get('email') ?: '');
 
-    $test = new APP\Log\Forgout_pass($email);
+    $test = new APP\Log\ForgotPass($email);
     $message = $test->send();
 }
 ?>
