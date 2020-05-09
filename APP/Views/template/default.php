@@ -77,7 +77,7 @@
                     <div class="widget-body">
                         <p class="simplenav">
                             <a href="/home/index">Accueil</a> |
-                            <a href="/home/condition_utilisation">Conditions d'utilisation</a> |
+                            <a href="/home/conditionUtilisation">Conditions d'utilisation</a> |
                             <a href="/contact/contact">Me contacter</a> |
                         </p>
                     </div>

@@ -4,7 +4,7 @@ namespace APP;
 
 use Core\Database\Database;
 
-include 'Private/config.php';
+require 'Private/config.php';
 
 /**
  * Class AppFactory
@@ -60,6 +60,8 @@ class AppFactory
      */
     public static function getMenu($page)
     {
+        $superglobal = new Config\Request();
+        
         $menu = array(
             'Accueil' => array(
                 'lien' => '/home/index/'
@@ -74,7 +76,7 @@ class AppFactory
                 'lien' => '/contact/contact/'
             )
         );
-        if (isset($_SESSION['login']) && $_SESSION['login']->acces == 10) {
+        if (!empty($superglobal->getSession()->get('login')) && $superglobal->getSession()->get('login')->acces == 10) {
             $menu['Article']['sub_menu'] = array(
                 'Tous les articles' => array(
                     'lien' => '/post/index/',

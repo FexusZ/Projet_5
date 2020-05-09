@@ -43,7 +43,7 @@ class PostCreate extends Post
             $this->ID_user = $id;
             return;
         }
-        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>'."\n";
+        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>';
     }
 
     /**

@@ -50,7 +50,9 @@ class Log
                 $this->password = substr($this->password, 70, -6) ?: $this->password;
                 return;
             }
+        }elseif(empty($this->password)){
             $this->message['confirm_password'] = '<p class="error"> Confirmation vide </p>';
+            return;
         }
         $this->message['confirm_password'] = '<p class="error"> Mot de passe et confirmation différent </p>';
     }

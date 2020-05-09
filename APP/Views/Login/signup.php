@@ -66,12 +66,12 @@ if (!empty($post->getParameter())) {
                     <div class="col-sm-6">
                         <label>Mot de passe <span class="text-danger">*</span></label>
                         <input name="password" type="password" class="form-control">
-                        <?php if (isset($message['Password'])) echo $message['Password'] . "\n"; ?>
+                        <?php if (isset($message['password'])) echo $message['password'] . "\n"; ?>
                     </div>
                     <div class="col-sm-6">
                         <label>Confirmation <span class="text-danger">*</span></label>
                         <input name="confirm_password" type="password" class="form-control">
-                        <?php if (isset($message['Confirm_password'])) echo $message['Confirm_password'] . "\n"; ?>
+                        <?php if (isset($message['confirm_password'])) echo $message['confirm_password'] . "\n"; ?>
                     </div>
                 </div>
                 <?php if (isset($message['password2'])) echo $message['password2'] . "\n"; ?>

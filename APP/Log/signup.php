@@ -9,11 +9,6 @@ namespace APP\Log;
 class Signup extends Log
 {
     /**
-     * @var array
-     */
-    private $message = array();
-
-    /**
      * Signup constructor.
      * @param $array
      */
@@ -87,7 +82,7 @@ class Signup extends Log
      */
     private function setPassword($password)
     {
-        if (empty($password) && strlen($password) > 8) {
+        if (empty($password) || strlen($password) < 8) {
             $this->message['password'] = '<p class="error"> Veuillez renseigner un mot de passe valide </p>';
             return;
         }

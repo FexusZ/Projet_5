@@ -40,7 +40,7 @@ class Session
      */
     public function setLogin($name, $value)
     {
-        $_SESSION['login']->$name = $value;
+        $_SESSION['login']->$name = htmlentities($value, ENT_QUOTES);
     }
 
     /**
@@ -52,5 +52,4 @@ class Session
             return $this->session;
         }
     }
-
 }

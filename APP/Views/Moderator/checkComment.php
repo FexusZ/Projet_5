@@ -33,7 +33,7 @@ if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
                                         <?= $value->Author . "\n"; ?>
                                         <?= $value->Content . "\n"; ?>
                                         <form style="text-align: center;" method="post">
-                                            <input type="hidden" name="id_comment" value='<?= $value->id_comment ?>'>
+                                            <input type="hidden" name="id_comment" value='<?= $value->id_comment."\n" ?>'>
                                             <input type="submit" name="valide_comment" class="btn"
                                                    value="Valider le commentaire">
                                             <input type="submit" name="delete_comment" class="btn"

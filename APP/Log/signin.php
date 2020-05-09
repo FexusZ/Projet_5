@@ -79,6 +79,14 @@ class Signin
         }
         $this->session->getSession()->setLogin('ID', (int)$param->ID);
         $this->session->getSession()->setLogin('acces', (int)$param->acces);
+
+        $ticket = bin2hex(random_bytes(64));
+        
+        $this->session->getSession()->setLogin('ticket', $ticket);
+
+        \APP\AppFactory::query('UPDATE client SET ticket = :ticket WHERE ID = :ID', NULL, 'No', 
+            [':ID'  =>  (int)$param->ID, ':ticket'  =>  $ticket]);
+
         sleep(1);
         \APP\AppFactory::header('Location: /home/index/');
     }

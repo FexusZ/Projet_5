@@ -50,10 +50,10 @@ class Post
     {
         if ($title !== null && $title !== '' && strlen($title) <= 32) {
             $this->title = $title;
-        } elseif ($title === null && $title === '') {
-            $this->message['title'] = '<p class="error">Veuillez ajouter un titre.</p>'."\n";
+        } elseif ($title === null || $title === '') {
+            $this->message['title'] = '<p class="error">Veuillez ajouter un titre.</p>';
         } else {
-            $this->message['title'] = '<p class="error">Titre trop long, 32 Caractere maximum.</p>'."\n";
+            $this->message['title'] = '<p class="error">Titre trop long, 32 Caractere maximum.</p>';
         }
     }
 
@@ -67,9 +67,9 @@ class Post
         } elseif ($this->content) {
             $this->chapo = substr($this->content, 0, 100);
         } elseif (!$chapo && !$this->content) {
-            $this->message['chapo'] = '<p class="error">Veuillez remplir le chapo et/ou le contenu.</p>'."\n";
+            $this->message['chapo'] = '<p class="error">Veuillez remplir le chapo et/ou le contenu.</p>';
         } else {
-            $this->message['chapo'] = '<p class="error">Chapo trop long, 100 Caractere maximum.</p>'."\n";
+            $this->message['chapo'] = '<p class="error">Chapo trop long, 100 Caractere maximum.</p>';
         }
     }
 
@@ -82,7 +82,7 @@ class Post
             $this->content = $content;
             return;
         }
-        $this->message['content'] = '<p class="error">Veuillez ajouter du contenu.</p>'."\n";
+        $this->message['content'] = '<p class="error">Veuillez ajouter du contenu.</p>';
     }
 
     /**
@@ -98,7 +98,7 @@ class Post
             $this->ID = $id;
             return;
         }
-        $this->message['id_post'] = '<p class="error">ID de post incorrect.</p>'."\n";
+        $this->message['id_post'] = '<p class="error">ID de post incorrect.</p>';
     }
 
     /**
@@ -112,7 +112,7 @@ class Post
             $this->ID_user = $id;
             return;
         }
-        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>'."\n";
+        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>';
     }
 
     /**

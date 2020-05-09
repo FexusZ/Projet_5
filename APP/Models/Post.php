@@ -77,7 +77,7 @@ class Post extends \Core\MVC\Models
         $author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', null, true, [':ID' => $this->ID_user])->author;
         $update_author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', null, true, [':ID' => $this->update_ID_user])->author;
 
-        return '<p> Publication faite le : ' . date('d-m-Y', $this->post_date) . ', par : ' . $author . '  </br> Derniere modification faite le : ' . date('d-m-Y', $this->last_update) . ', par : ' . $update_author . '</p>';
+        return '<p> Publication faite le : ' . date('d-m-Y', $this->post_date) . ', par : ' . $author . '  </br> Dernière modification faite le : ' . date('d-m-Y', $this->last_update) . ', par : ' . $update_author . '</p>';
     }
 
     /**

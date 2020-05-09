@@ -36,7 +36,7 @@ class PostComment extends Post
             $this->comment = $comment;
             return;
         }
-        $this->message['comment'] = '<p class="error">Merci d\'ajouter un commentaire avant d\'envoyer</p>'."\n";
+        $this->message['comment'] = '<p class="error">Merci d\'ajouter un commentaire avant d\'envoyer</p>';
     }
 
     /**
@@ -57,7 +57,7 @@ class PostComment extends Post
                 ':ID_user' => $this->ID_user,
                 ':post_date' => $this->post_date
             ]);
-        $this->message['success'] = '<p class="success"> Commentaire envoyé en validations </p>'."\n";
+        $this->message['success'] = '<p class="success"> Commentaire envoyé en validations </p>';
         return $this->message;
     }
 }

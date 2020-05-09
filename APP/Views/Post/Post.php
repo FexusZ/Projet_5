@@ -6,9 +6,11 @@ if (empty($article)) {
 
     if (!empty($post->getParameter()) && !empty($session->get('login'))) {
 
+        $param = explode('/', $get->get('p'));
+
         $comment = htmlspecialchars($post->get('comment') ?: 0);
         $id_session = (int)$session->get('login')->ID ?: 0;
-        $id = (int)$post->ID ?: 0;
+        $id = (int)$param[2] ?: 0;
 
         $new_comment = new APP\Post\PostComment($comment, $id_session, $id);
         $message = $new_comment->send();
@@ -27,7 +29,7 @@ if (empty($article)) {
                 <?= $article->Title . "\n"; ?>
                 <?= $article->Content . "\n"; ?>
                 <?= $article->Author . "\n"; ?>
-                <?php if (!empty($session->get('login')) && $session->get('login')->acces) echo "<a href='/post/update/" . $article->ID . "'> Modifier le post </a>\n"; ?>
+                <?php if (!empty($session->get('login')) && $session->get('login')->acces === 10) echo "<a href='/post/update/" . $article->ID . "'> Modifier le post </a>\n"; ?>
             </div>
         </div>
         <hr>

@@ -19,7 +19,7 @@ class Parameter
      */
     public function __construct($parameter)
     {
-        $this->parameter = $parameter;
+        $this->setParameter($parameter);
     }
 
     /**
@@ -51,5 +51,13 @@ class Parameter
             return $this->parameter;
         }
     }
+
+    private function setParameter($parameter)
+    {
+        foreach ($parameter as $key => $value) {
+            $this->parameter[$key] = htmlentities($value, ENT_QUOTES);
+        }
+    }
+
 
 }

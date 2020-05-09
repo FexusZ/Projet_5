@@ -42,7 +42,7 @@ class Contact
                 $this->$method($value);
                 continue;
             }
-            $this->message['error'] = '<p class="error">Modification de champs interdite</span>';
+            $this->message['error'] = '<p class="error">Modification de champ interdite</span>';
         }
     }
 
@@ -55,7 +55,7 @@ class Contact
             $this->name = $name;
             return;
         }
-        $this->message['name'] = '<p class="error"> Merci de remplir le champs de nom/prenom </p>';
+        $this->message['name'] = '<p class="error"> Merci de remplir le champ de nom/prenom </p>';
     }
 
     /**
