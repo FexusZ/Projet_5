@@ -38,8 +38,12 @@ class Session
      * @param $name
      * @param $value
      */
-    public function setLogin($name, $value)
+    public function setLogin($name, $value, $int = false)
     {
+        if ($int) {
+            $_SESSION['login']->$name = (int) $value;
+            return;
+        }
         $_SESSION['login']->$name = htmlentities($value, ENT_QUOTES);
     }
 

@@ -2,7 +2,7 @@
 
 namespace APP\Post;
 
-use APP\AppFactory;
+use APP\App;
 
 /**
  * Class PostUpdate
@@ -42,7 +42,7 @@ class PostUpdate extends Post
         if (!empty($this->message)) {
             return $this->message;
         }
-        AppFactory::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update WHERE ID = :id',
+        App::query('UPDATE post SET title = :title, chapo = :chapo, content = :content, update_ID_user = :ID_user, last_update = :last_update WHERE ID = :id',
             null, 'No',
             [
                 ':title' => $this->title,
@@ -52,6 +52,6 @@ class PostUpdate extends Post
                 ':last_update' => $this->last_update,
                 ':id' => $this->ID
             ]);
-        AppFactory::header('Location: /post/post/' . $this->ID);
+        App::header('Location: /post/post/' . $this->ID);
     }
 }

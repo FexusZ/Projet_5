@@ -43,7 +43,7 @@ Réalisation d'un blog en PHP orienté objet.
         * Contrôleur : Gère la liaison entre Modèles et Vues, et gère toute la logique.
     * Les classes parentes qui regroupes les méthode redondante se trouve  dans le fichier Core\MVC, et les classes enfants se trouve dans le dossier APP dans un dossier nommées.
     * Le fichiers Config dans APP, va permettre d'utiliser les variables SuperGlobal (GET/POST/SESSION) grace a des setters et getters.
-    * La classe AppFactory va permettre de faire appel a la base de données automatiquement grace a une methode (en faisant appel a la classe Database dans Core\Database), ainsi que s'occuper de generer le menu header.
+    * La classe App va permettre de faire appel a la base de données automatiquement grace a une methode (en faisant appel a la classe Database dans Core\Database), ainsi que s'occuper de generer le menu header.
     * Les autres dossiers dans le dossier APP, sons les classes qui vont permettent de traiter les différentes données envoyé par l'utilisateur.
 
 ### Lien Codacy

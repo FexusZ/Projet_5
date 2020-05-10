@@ -37,6 +37,20 @@ class Log
     protected $token;
 
     /**
+     * Log constructor.
+     * @param $array
+     */
+    public function __construct($array)
+    {
+        foreach ($array as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            }
+        }
+    }
+
+    /**
      * @param $password
      */
     protected function setConfirm_password($password)
@@ -55,5 +69,17 @@ class Log
             return;
         }
         $this->message['confirm_password'] = '<p class="error"> Mot de passe et confirmation différent </p>';
+    }
+
+    /**
+     * @param $password
+     */
+    protected function setPassword($password)
+    {
+        if (empty($password) || strlen($password) < 8) {
+            $this->message['password'] = '<p class="error"> Veuillez renseigner un mot de passe valide </p>';
+            return;
+        }
+        $this->password = htmlspecialchars($password);
     }
 }

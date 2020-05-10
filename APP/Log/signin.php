@@ -28,7 +28,7 @@ class Signin
     /**
      * @param $username
      */
-    private function setUsername($username)
+    protected function setUsername($username)
     {
         $this->username = htmlspecialchars($username);
     }
@@ -36,7 +36,7 @@ class Signin
     /**
      * @param $password
      */
-    private function setPassword($password)
+    protected function setPassword($password)
     {
         if (!empty($password)) {
             $this->password = hash('sha512', $password);
@@ -54,7 +54,7 @@ class Signin
      */
     public function signin()
     {
-        $param = \APP\AppFactory::query('SELECT * FROM client WHERE (username = :username OR email = :username) AND password = :password',
+        $param = \APP\App::query('SELECT * FROM client WHERE (username = :username OR email = :username) AND password = :password',
             null, true,
             [
                 ':username' => $this->username,
@@ -69,7 +69,7 @@ class Signin
      * @param $param
      * @return string
      */
-    private function hydrate($param)
+    protected function hydrate($param)
     {
         if ($param == null) {
             return '<p class="error"> Mauvais identifiant </p>';
@@ -77,17 +77,22 @@ class Signin
         if ($param->token_use == 0) {
             return '<p class="error">Compte non validé </p>';
         }
-        $this->session->getSession()->setLogin('ID', (int)$param->ID);
-        $this->session->getSession()->setLogin('acces', (int)$param->acces);
+        $this->session->getSession()->setLogin('ID', (int)$param->ID, true);
+        $this->session->getSession()->setLogin('acces', (int)$param->acces, true);
 
         $ticket = bin2hex(random_bytes(64));
         
         $this->session->getSession()->setLogin('ticket', $ticket);
 
-        \APP\AppFactory::query('UPDATE client SET ticket = :ticket WHERE ID = :ID', NULL, 'No', 
+
+        $token = bin2hex(random_bytes(64));
+
+        $this->session->getSession()->setLogin('token', $token);
+        
+        \APP\App::query('UPDATE client SET ticket = :ticket WHERE ID = :ID', NULL, 'No', 
             [':ID'  =>  (int)$param->ID, ':ticket'  =>  $ticket]);
 
         sleep(1);
-        \APP\AppFactory::header('Location: /home/index/');
+        \APP\App::header('Location: /home/index/');
     }
 }

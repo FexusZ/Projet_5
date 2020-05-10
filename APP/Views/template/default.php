@@ -53,7 +53,7 @@
                     <h3 class="widget-title">Me contacter</h3>
                     <div class="widget-body">
                         <p> 06********<br>
-                            <a href="mailto:#">jseb.1999@outlook.fr</a><br>
+                            <a href="mailto:jseb.1999@outlook.fr">jseb.1999@outlook.fr</a><br>
                     </div>
                 </div>
 

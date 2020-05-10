@@ -1,18 +1,18 @@
 <?php
 if (empty($article)) {
 
-    APP\AppFactory::header('Location: /home/error/');
+    APP\App::header('Location: /home/error/');
 } else {
 
-    if (!empty($post->getParameter()) && !empty($session->get('login'))) {
+    if (!empty($post->getParameter()) && !empty($session->get('login')) && $post->get('token') === $session->get('login')->token) {
 
         $param = explode('/', $get->get('p'));
 
-        $comment = htmlspecialchars($post->get('comment') ?: 0);
+        $commentaire = htmlspecialchars($post->get('comment') ?: 0);
         $id_session = (int)$session->get('login')->ID ?: 0;
         $id = (int)$param[2] ?: 0;
 
-        $new_comment = new APP\Post\PostComment($comment, $id_session, $id);
+        $new_comment = new APP\Post\PostComment($commentaire, $id_session, $id);
         $message = $new_comment->send();
     }
     ?>
@@ -66,6 +66,7 @@ if (empty($article)) {
                         <?php if (!empty($message['comment'])) echo $message['comment'] . "\n"; ?>
                         <?php if (!empty($message['id_user'])) echo $message['id_user'] . "\n"; ?>
                         <?php if (!empty($message['id_post'])) echo $message['id_post'] . "\n"; ?>
+                        <input type="hidden" name="token" value='<?= $session->get('login')->token ?>'>
                     </form>
                     <?php
                 }

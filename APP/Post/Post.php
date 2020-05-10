@@ -2,7 +2,7 @@
 
 namespace APP\Post;
 
-use APP\AppFactory;
+use APP\App;
 
 /**
  * Class Post
@@ -90,7 +90,7 @@ class Post
      */
     protected function setId($id)
     {
-        $test_id = AppFactory::query('SELECT * FROM post WHERE ID = :id', null, true,
+        $test_id = App::query('SELECT * FROM post WHERE ID = :id', null, true,
             [
                 ':id' => $id,
             ]);
@@ -106,7 +106,7 @@ class Post
      */
     protected function setId_user($id)
     {
-        $test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id',
+        $test_id = App::query('SELECT * FROM client WHERE ID = :id',
             null, true, [':id' => $id]);
         if (is_int($id) && !empty($test_id)) {
             $this->ID_user = $id;

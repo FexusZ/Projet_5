@@ -2,7 +2,7 @@
 
 namespace APP\Post;
 
-use APP\AppFactory;
+use APP\App;
 
 /**
  * Class PostDelete
@@ -31,11 +31,11 @@ class PostDelete extends Post
         if (!empty($this->message['id_user']) || !empty($this->message['id_post'])) {
             return $this->message;
         }
-        AppFactory::query('DELETE FROM post WHERE ID = :id',
+        App::query('DELETE FROM post WHERE ID = :id',
             null, 'No',
             [
                 ':id' => $this->ID
             ]);
-        AppFactory::header('Location: /home/index');
+        App::header('Location: /home/index');
     }
 }

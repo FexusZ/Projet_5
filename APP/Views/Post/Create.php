@@ -1,10 +1,10 @@
 <?php
 if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
 
-    APP\AppFactory::header('Location: /home/error/');
+    APP\App::header('Location: /home/error/');
 } else {
 
-    if (!empty($post->getParameter())) {
+    if (!empty($post->getParameter()) && $post->get('token') === $session->get('login')->token) {
 
         $title = htmlspecialchars($post->get('title') ?: '');
         $chapo = htmlspecialchars($post->get('chapo') ?: '');
@@ -64,6 +64,7 @@ if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
                     <input type="submit" value="Créer" class='btn'>
                 </p>
                 <?php if (!empty($message['id_user'])) echo $message['id_user'] . "\n"; ?>
+                <input type="hidden" name="token" value='<?= $session->get('login')->token ?>'>
             </form>
         </div>
     </div>

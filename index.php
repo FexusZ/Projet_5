@@ -12,10 +12,17 @@ $page = array(
 session_start();
 require 'vendor/autoload.php';
 $superglobal = new APP\Config\Request();
+if (isset($_SERVER['HTTP_REFERER']) && preg_match('#^http://projet5#' , $_SERVER['HTTP_REFERER']) !== 1) {
+    echo APP\App::getMenu('Accueil')."\n";
+    $controller = new APP\Controllers\Home;
+    call_user_func_array(array($controller, 'error'), array());
+    exit();
+}
+
 
 if (!empty($superglobal->getSession()->get('login'))) {
     
-    $ticket = APP\AppFactory::query('SELECT ticket FROM client WHERE ID = :ID', NULL, true, [':ID'  =>  $superglobal->getSession()->get('login')->ID])->ticket;
+    $ticket = APP\App::query('SELECT ticket FROM client WHERE ID = :ID', NULL, true, [':ID'  =>  $superglobal->getSession()->get('login')->ID])->ticket;
     
     if ($superglobal->getSession()->get('login')->ticket === $ticket && !empty($superglobal->getSession()->get('login'))) {
 
@@ -23,12 +30,12 @@ if (!empty($superglobal->getSession()->get('login'))) {
 
         $superglobal->getSession()->setLogin('ticket', $ticket);
 
-        APP\AppFactory::query('UPDATE client SET ticket = :ticket WHERE ID = :ID', NULL, 'No', 
+        APP\App::query('UPDATE client SET ticket = :ticket WHERE ID = :ID', NULL, 'No', 
             [':ID'  =>  $superglobal->getSession()->get('login')->ID, ':ticket'  =>  $ticket]);
 
     } else {
 
-        echo APP\AppFactory::getMenu('Accueil')."\n";
+        echo APP\App::getMenu('Accueil')."\n";
         $controller = new APP\Controllers\Home;
         call_user_func_array(array($controller, 'error'), array());
         exit();
@@ -52,17 +59,17 @@ if (class_exists($controller)) {
             $param[0] = $page[$param[0]];
         }
 
-        echo APP\AppFactory::getMenu(ucfirst($param[0]))."\n";
+        echo APP\App::getMenu(ucfirst($param[0]))."\n";
         unset($param[0]);
         unset($param[1]);
         call_user_func_array(array($controller, $action), $param);
     } else {
-        echo APP\AppFactory::getMenu('Accueil')."\n";
+        echo APP\App::getMenu('Accueil')."\n";
         $controller = new APP\Controllers\Home;
         call_user_func_array(array($controller, 'error'), array());
     }
 } else {
-    echo APP\AppFactory::getMenu('Accueil')."\n";
+    echo APP\App::getMenu('Accueil')."\n";
     $controller = new APP\Controllers\Home;
     call_user_func_array(array($controller, 'index'), array());
 }

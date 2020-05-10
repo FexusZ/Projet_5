@@ -2,7 +2,7 @@
 
 namespace APP\Post;
 
-use APP\AppFactory;
+use APP\App;
 
 /**
  * Class PostComment
@@ -48,7 +48,7 @@ class PostComment extends Post
         if (!empty($this->message)) {
             return $this->message;
         }
-        AppFactory::query('INSERT INTO comment(ID_post, comment, ID_user, post_date)
+        App::query('INSERT INTO comment(ID_post, comment, ID_user, post_date)
                 VALUES(:ID_post, :comment, :ID_user, :post_date)',
             null, 'No',
             [

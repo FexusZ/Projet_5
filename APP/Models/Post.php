@@ -2,7 +2,7 @@
 
 namespace APP\Models;
 
-use APP\AppFactory;
+use APP\App;
 
 /**
  * Class Post
@@ -10,21 +10,13 @@ use APP\AppFactory;
  */
 class Post extends \Core\MVC\Models
 {
-    /**
-     * @var
-     */
-    protected $db;
-    /**
-     * @var
-     */
-    protected $table;
 
     /**
      * @return mixed
      */
     public static function getAll()
     {
-        return AppFactory::query("SELECT * FROM post", __CLASS__);
+        return App::query("SELECT * FROM post ORDER BY post_date DESC", __CLASS__);
     }
 
     /**
@@ -32,7 +24,7 @@ class Post extends \Core\MVC\Models
      */
     public static function getLast()
     {
-        return AppFactory::query("SELECT * FROM post LIMIT 4", __CLASS__);
+        return App::query("SELECT * FROM post ORDER BY post_date DESC LIMIT 4", __CLASS__);
     }
 
     /**
@@ -41,7 +33,7 @@ class Post extends \Core\MVC\Models
      */
     public static function getPost($id)
     {
-        return AppFactory::query('SELECT * FROM post WHERE id = ?', __CLASS__, true, [$id]);
+        return App::query('SELECT * FROM post WHERE id = ?', __CLASS__, true, [$id]);
     }
 
     /**
@@ -74,8 +66,8 @@ class Post extends \Core\MVC\Models
      */
     public function getAuthor()
     {
-        $author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', null, true, [':ID' => $this->ID_user])->author;
-        $update_author = AppFactory::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', null, true, [':ID' => $this->update_ID_user])->author;
+        $author = App::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', null, true, [':ID' => $this->ID_user])->author;
+        $update_author = App::query('SELECT concat(firstname, " ", lastname) as author FROM client WHERE ID = :ID', null, true, [':ID' => $this->update_ID_user])->author;
 
         return '<p> Publication faite le : ' . date('d-m-Y', $this->post_date) . ', par : ' . $author . '  </br> Dernière modification faite le : ' . date('d-m-Y', $this->last_update) . ', par : ' . $update_author . '</p>';
     }

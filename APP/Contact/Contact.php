@@ -110,7 +110,7 @@ class Contact
         $headers .= "Reply-To: " . $this->email . "\n";
         $headers .= "Content-Type: text/html; charset=\"iso-8859-1\"";
 
-        \APP\AppFactory::mail('fexus.j.sebastien@gmail.com', $this->subject, $this->content, $headers);
+        \APP\App::mail('fexus.j.sebastien@gmail.com', $this->subject, $this->content, $headers);
         return $this->message;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace APP\Models;
 
-use \APP\AppFactory;
+use \APP\App;
 
 
 /**
@@ -16,11 +16,12 @@ class Moderator extends \Core\MVC\Models
      */
     public static function getNotValidatePost()
     {
-        return AppFactory::query("SELECT p.ID as id_post, p.title
+        return App::query("SELECT p.ID as id_post, p.title
                                     FROM comment as c
                                     JOIN post as p
                                         ON c.ID_post = p.ID
                                     WHERE c.validate = 0
+                                    GROUP BY id_post
                                     ORDER BY p.ID, c.ID", __CLASS__);
     }
 
@@ -30,7 +31,7 @@ class Moderator extends \Core\MVC\Models
      */
     public static function getNotValidateComment($id)
     {
-        return AppFactory::query("SELECT c.ID as id_comment, c.comment, c.comment, c.Id_user, concat(cl.firstname, ' ', cl.lastname) as author, c.post_date
+        return App::query("SELECT c.ID as id_comment, c.comment, c.comment, c.Id_user, concat(cl.firstname, ' ', cl.lastname) as author, c.post_date
                                     FROM comment as c
                                     JOIN post as p
                                         ON c.ID_post = p.ID

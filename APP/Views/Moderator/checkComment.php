@@ -1,10 +1,10 @@
 <?php
 if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
 
-    APP\AppFactory::header('Location: /home/error/');
+    APP\App::header('Location: /home/error/');
 } else {
 
-    if (!empty($post->getParameter())) {
+    if (!empty($post->getParameter()) && $post->get('token') === $session->get('login')->token) {
 
         $id = (int)$post->get('id_comment') ?: 0;
 
@@ -38,6 +38,7 @@ if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
                                                    value="Valider le commentaire">
                                             <input type="submit" name="delete_comment" class="btn"
                                                    value="Supprimer le commentaire">
+                                            <input type="hidden" name="token" value='<?= $session->get('login')->token ?>'>
                                         </form>
                                         <?php if (isset($message['id_comment'])) echo $message['id_comment'] . "\n"; ?>
                                     </div>

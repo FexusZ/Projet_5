@@ -1,6 +1,6 @@
 <?php
 if (!empty($session->get('login'))) {
-    APP\AppFactory::header('Location: /home/error/');
+    APP\App::header('Location: /home/error/');
 }
 
 if (!empty($post->getParameter())) {

@@ -45,7 +45,7 @@ class Login extends \Core\MVC\Controllers
      */
     public function tokenPass($token)
     {
-        $test_token = \APP\AppFactory::query('SELECT pass_token FROM client WHERE token = :token', null, true,
+        $test_token = \APP\App::query('SELECT pass_token FROM client WHERE token = :token', null, true,
             [':token' => $token]);
         if ($test_token) {
             if ($test_token->pass_token == 0) {
@@ -68,14 +68,14 @@ class Login extends \Core\MVC\Controllers
      */
     public function token($token)
     {
-        $test_token = \APP\AppFactory::query('SELECT token_use FROM client WHERE token = :token', null, true,
+        $test_token = \APP\App::query('SELECT token_use FROM client WHERE token = :token', null, true,
             [
                 ':token' => $token
             ]);
         if ($test_token) {
             if ($test_token->token_use == 0) {
                 $message = '<p class="success">Compte Validé </p>';
-                \APP\AppFactory::query('UPDATE client SET token_use = 1 WHERE token = :token', null, 'No',
+                \APP\App::query('UPDATE client SET token_use = 1 WHERE token = :token', null, 'No',
                     [
                         ':token' => $token
                     ]);

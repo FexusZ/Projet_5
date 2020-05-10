@@ -2,11 +2,9 @@
 
 if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
 
-    \APP\AppFactory::header('Location: /home/error/');
+    \APP\App::header('Location: /home/error/');
 } else {
-
-    if (!empty($post->getParameter())) {
-
+    if (!empty($post->getParameter()) && $post->get('token') === $session->get('login')->token) {
         $title = htmlspecialchars($post->get('title') ?: '');
         $chapo = htmlspecialchars($post->get('chapo') ?: '');
         $content = htmlspecialchars($post->get('content') ?: '');
@@ -72,7 +70,7 @@ if (empty($session->get('login')) || $session->get('login')->acces !== 10) {
 
                 <?php if (!empty($message['id_post'])) echo $message['id_post'] . "\n"; ?>
                 <?php if (!empty($message['id_user'])) echo $message['id_user'] . "\n"; ?>
-
+                <input type="hidden" name="token" value='<?= $session->get('login')->token ?>'>
                 <p id='input_post'>
                     <input type="submit" name='update' value="Modifier" class='btn'>
                     <input type="submit" name='delete' value="Supprimer" class='btn'>

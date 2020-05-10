@@ -2,7 +2,7 @@
 
 namespace APP\Moderator;
 
-use APP\AppFactory;
+use APP\App;
 
 /**
  * Class Comment
@@ -33,7 +33,7 @@ class Comment
      */
     protected function setId_comment($id)
     {
-        $test_id = AppFactory::query('SELECT * FROM comment WHERE ID = :id', null, true,
+        $test_id = App::query('SELECT * FROM comment WHERE ID = :id', null, true,
             [
                 ':id' => $id,
             ]);

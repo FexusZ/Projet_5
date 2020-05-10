@@ -2,7 +2,7 @@
 
 namespace APP\Post;
 
-use APP\AppFactory;
+use APP\App;
 
 /**
  * Class PostCreate
@@ -38,7 +38,7 @@ class PostCreate extends Post
      */
     protected function setId_user($id)
     {
-        $test_id = AppFactory::query('SELECT * FROM client WHERE ID = :id', null, true, array(':id' => $id));
+        $test_id = App::query('SELECT * FROM client WHERE ID = :id', null, true, array(':id' => $id));
         if (is_int($id) && $test_id) {
             $this->ID_user = $id;
             return;
@@ -55,7 +55,7 @@ class PostCreate extends Post
         if (!empty($this->message)) {
             return $this->message;
         }
-        AppFactory::query('INSERT INTO post(title, chapo, content, ID_user, update_ID_user, last_update, post_date)
+        App::query('INSERT INTO post(title, chapo, content, ID_user, update_ID_user, last_update, post_date)
                 VALUES(:title, :chapo, :content, :ID_user, :ID_user, :last_update, :post_date)',
             null, 'No',
             [
@@ -66,7 +66,7 @@ class PostCreate extends Post
                 ':last_update' => $this->last_update,
                 ':post_date' => $this->post_date
             ]);
-        $last_id = AppFactory::query('SELECT MAX(ID) as ID FROM post', null, true)->ID;
-        AppFactory::header('Location: /post/post/' . $last_id);
+        $last_id = App::query('SELECT MAX(ID) as ID FROM post', null, true)->ID;
+        App::header('Location: /post/post/' . $last_id);
     }
 }
