@@ -34,19 +34,6 @@ class PostCreate extends Post
     }
 
     /**
-     * @param $id
-     */
-    protected function setId_user($id)
-    {
-        $test_id = App::query('SELECT * FROM client WHERE ID = :id', null, true, array(':id' => $id));
-        if (is_int($id) && $test_id) {
-            $this->ID_user = $id;
-            return;
-        }
-        $this->message['id_user'] = '<p class="error">ID d\'utilisateur incorrect.</p>';
-    }
-
-    /**
      * @return mixed
      */
     public function insert()

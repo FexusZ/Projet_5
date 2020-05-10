@@ -39,7 +39,7 @@ class Parameter
      */
     public function set($name, $value)
     {
-        $this->parameter[$name] = $value;
+        $this->parameter[$name] = htmlentities($value, ENT_QUOTES);
     }
 
     /**
